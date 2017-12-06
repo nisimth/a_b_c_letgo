@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">letgo_302838271_305212946</string>
+    <string name="home_btn_txt">Home</string>
+    <string name="notification_btn_txt">Notificatios</string>
+    <string name="chats_btn_txt">Chats</string>
+    <string name="myprofile_btn_txt">My Profile</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+</resources>

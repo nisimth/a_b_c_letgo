@@ -19,7 +19,7 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        homeBtn = (Button) findViewById(R.id.home_btn);
+
         FrameLayout f1 = (FrameLayout) findViewById(R.id.root_view);
 
     }

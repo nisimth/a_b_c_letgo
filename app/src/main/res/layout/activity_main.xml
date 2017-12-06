@@ -7,6 +7,30 @@
     android:orientation="vertical"
     tools:context="course.android.letgo_302838271_305212946.TestActivity">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="top|center"
+        android:weightSum="1">
+        <SearchView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:queryHint="letgo"
+            android:layout_weight="0.9"
+            android:background="#f67493"
+
+            />
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/filter_icon"
+            android:layout_weight="0.1"
+            android:background="#f67493"
+            />
+
+    </LinearLayout>
+
     <FrameLayout
         android:id="@+id/root_view"
         android:layout_width="match_parent"
@@ -22,6 +46,8 @@
         android:layout_width="match_parent"
         android:layout_height="32dp"
         >
+
+
 
         <Button
             android:id="@+id/home_btn"

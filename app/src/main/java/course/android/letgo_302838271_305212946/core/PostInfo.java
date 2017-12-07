@@ -6,12 +6,16 @@ package course.android.letgo_302838271_305212946.core;
 
 public class PostInfo {
 
+
     private String name;
     private int imgId;
+    private String tag;
 
-    public PostInfo(String name, int imgId) {
+    public PostInfo(String name,String tag, int imgId) {
         this.name = name;
+        this.tag = tag;
         this.imgId = imgId;
+
     }
 
     public String getName() {
@@ -29,4 +33,8 @@ public class PostInfo {
     public void setImgId(int imgId) {
         this.imgId = imgId;
     }
+
+    public String getTag() { return tag; }
+
+    public void setTag(String tag) { this.tag = tag; }
 }

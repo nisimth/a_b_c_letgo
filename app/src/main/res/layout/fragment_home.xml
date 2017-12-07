@@ -6,10 +6,12 @@
 
     <!-- TODO: Update blank fragment layout -->
 
-    <ListView
+    <GridView
         android:id="@+id/posts_list_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:numColumns="auto_fit"
+        android:columnWidth="100dp">
 
-    </ListView>
+    </GridView>
 </FrameLayout>

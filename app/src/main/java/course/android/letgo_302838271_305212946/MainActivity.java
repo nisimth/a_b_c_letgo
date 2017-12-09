@@ -25,6 +25,11 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
         FrameLayout f1 = (FrameLayout) findViewById(R.id.root_view);
+        FragmentManager fm = getFragmentManager();
+        FragmentTransaction ft = fm.beginTransaction();
+        HomeFragment home = new HomeFragment();
+        ft.add(R.id.root_view, home );
+        ft.commit();
 
     }
 
@@ -32,9 +37,7 @@ public class MainActivity extends Activity {
         FragmentManager fm = getFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
         HomeFragment home = new HomeFragment();
-        ft.replace(R.id.root_view,home);
+        ft.add(R.id.root_view,home);
         ft.commit();
     }
-
-
 }

@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.app.Fragment;
 
 
+
+import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -60,9 +62,6 @@ public class HomeFragment extends Fragment{
         postsList.add(p11);
         postsList.add(p12);
     }
-
-
-
 
 
 

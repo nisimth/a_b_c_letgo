@@ -29,6 +29,7 @@ public class MainActivity extends Activity {
         FragmentTransaction ft = fm.beginTransaction();
         HomeFragment home = new HomeFragment();
         ft.add(R.id.root_view, home );
+        ft.addToBackStack(null);
         ft.commit();
 
     }

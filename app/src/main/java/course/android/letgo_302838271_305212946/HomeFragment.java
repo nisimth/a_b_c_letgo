@@ -2,24 +2,26 @@ package course.android.letgo_302838271_305212946;
 
 
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.app.Fragment;
 
 
-
-import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.GridView;
+import android.widget.ImageButton;
 
 
-import java.util.ArrayList;
 import java.util.List;
 
 
 import course.android.letgo_302838271_305212946.core.PostInfo;
+import course.android.letgo_302838271_305212946.database.MyInfoManager;
 
 
 /**
@@ -29,15 +31,16 @@ public class HomeFragment extends Fragment{
 
     private Context context;
 
-    private GridView gridView;
+    private GridView postsGridView;
     private List <PostInfo> postsList;
     EditText editText;
+    PostInfoAdapter adapter;
 
 
     public HomeFragment() {
-        postsList = new ArrayList<PostInfo>();
+        postsList = MyInfoManager.getInstance().getAllPosts();
 
-        PostInfo p1 = new PostInfo("a","adidas",R.drawable.a);
+        /*PostInfo p1 = new PostInfo("a","adidas",R.drawable.a);
         PostInfo p2 = new PostInfo("b","nike",R.drawable.b);
         PostInfo p3 = new PostInfo("c","puma",R.drawable.c);
         PostInfo p4 = new PostInfo("d","nike",R.drawable.d);
@@ -60,7 +63,7 @@ public class HomeFragment extends Fragment{
         postsList.add(p9);
         postsList.add(p10);
         postsList.add(p11);
-        postsList.add(p12);
+        postsList.add(p12);*/
     }
 
 
@@ -73,12 +76,17 @@ public class HomeFragment extends Fragment{
 
         View rootView = inflater.inflate(R.layout.fragment_home,container,false);
 
-        PostInfoAdapter adapter = new PostInfoAdapter(context,R.layout.post_item_list_layout,postsList);
 
-        gridView = (GridView) rootView.findViewById(R.id.posts_list_view);
+        postsGridView = (GridView) rootView.findViewById(R.id.posts_list_view);
+        ImageButton addNewPostBtn= (ImageButton) rootView.findViewById(R.id.add_new_post_btn);
 
 
-        gridView.setAdapter(adapter);
+
+
+        if(postsList!=null && postsList.size()>0){
+            adapter = new PostInfoAdapter(context,R.layout.post_item_list_layout,postsList);
+            postsGridView.setAdapter(adapter);
+        }
         return rootView;
     }
 

@@ -34,8 +34,7 @@ public class PostInfoAdapter extends ArrayAdapter <PostInfo> {
         super(context, resource);
         this.context = context;
         this.postsList = postsList;
-        this.arraylist = new ArrayList<PostInfo>();
-        this.arraylist.addAll(postsList);
+
     }
 
     @Override
@@ -53,13 +52,17 @@ public class PostInfoAdapter extends ArrayAdapter <PostInfo> {
         View itemView = inflater.inflate(R.layout.post_item_list_layout,null,false);
 
         ImageView img = (ImageView) itemView.findViewById(R.id.post_img_txtview);
-        TextView txt = (TextView) itemView.findViewById(R.id.item_info_txtview);
-        EditText et = (EditText) itemView.findViewById(R.id.search_viewtxt);
+        TextView title = (TextView) itemView.findViewById(R.id.post_title_txtview);
+        /*TextView content = (TextView) itemView.findViewById(R.id.post_content_txtview);
+        TextView tag = (TextView) itemView.findViewById(R.id.post_tag_txtview) ;*/
+
 
         PostInfo post = postsList.get(position);
 
-        img.setImageResource(post.getImgId());
-        txt.setText(post.getName());
+        img.setImageBitmap(post.getImg());
+        title.setText(post.getTitle());
+        /*content.setText(post.getContent());
+        tag.setText(post.getTag());*/
 
 
 
@@ -68,23 +71,6 @@ public class PostInfoAdapter extends ArrayAdapter <PostInfo> {
 
 
 
-    }
-
-    // Filter Class
-    public void filter(String charText) {
-        charText = charText.toLowerCase(Locale.getDefault());
-        arraylist.clear();
-        if (charText.length() == 0) {
-            arraylist.addAll(arraylist);
-        } else {
-            for (PostInfo wp : arraylist) {
-                if (wp.getTag().toLowerCase(Locale.getDefault())
-                        .contains(charText)) {
-                    arraylist.add(wp);
-                }
-            }
-        }
-        notifyDataSetChanged();
     }
 
 

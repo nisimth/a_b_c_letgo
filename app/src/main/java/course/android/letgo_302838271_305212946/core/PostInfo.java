@@ -1,40 +1,97 @@
 package course.android.letgo_302838271_305212946.core;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+
+import java.io.ByteArrayOutputStream;
+
 /**
  * Created by Nisim on 06/12/2017.
  */
 
 public class PostInfo {
 
-
-    private String name;
-    private int imgId;
+    private String id;
+    private String title;
+    private String content;
     private String tag;
+    private Bitmap img;
 
-    public PostInfo(String name,String tag, int imgId) {
-        this.name = name;
+    public PostInfo(String title,String content,String tag, Bitmap img) {
+        this.id = generateId();
+        this.title = title;
+        this.content = content;
         this.tag = tag;
-        this.imgId = imgId;
+        this.img = img;
+
 
     }
 
-    public String getName() {
-        return name;
+    private String generateId(){
+        return "post_ " + System.currentTimeMillis();
+
+
+    }
+    public PostInfo(){
+        this.id = generateId();
     }
 
-    public int getImgId() {
-        return imgId;
+    public String getId() {
+        return id;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public void setImgId(int imgId) {
-        this.imgId = imgId;
+    public String getTitle() {
+        return title;
     }
 
-    public String getTag() { return tag; }
+    public void setTitle(String name) {
+        this.title = name;
+    }
 
-    public void setTag(String tag) { this.tag = tag; }
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public String getTag() {
+        return tag;
+    }
+
+    public void setTag(String tag) {
+        this.tag = tag;
+    }
+
+    public Bitmap getImg() {
+        return img;
+    }
+
+    public void setImg(Bitmap img) {
+        this.img = img;
+    }
+
+    public byte[] getImgByteArray(){
+        byte[] res = new byte[0];
+        if(img!=null){
+            ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+            img.compress(Bitmap.CompressFormat.PNG,0,outputStream);
+            res = outputStream.toByteArray();
+        }
+        return res;
+    }
+
+
+
+    public void setImgFromByteArray(byte[] imgFromByteArray) {
+        if (imgFromByteArray != null) {
+            img = BitmapFactory.decodeByteArray(imgFromByteArray, 0, imgFromByteArray.length);
+        }
+    }
+
 }

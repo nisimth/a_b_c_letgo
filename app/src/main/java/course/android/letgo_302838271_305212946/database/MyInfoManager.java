@@ -16,6 +16,8 @@ public class MyInfoManager {
 
     private PostsDataBase postsDataBase;
 
+    private PostInfo editPost;
+
     public static MyInfoManager getInstance(){
         if(instance==null){
             instance = new MyInfoManager();
@@ -42,7 +44,25 @@ public class MyInfoManager {
         return postsDataBase.addNewPostInfo(postInfo);
     }
 
+    public boolean deletePost(PostInfo postInfo){
+        return  postsDataBase.deletPost(postInfo);
+    }
+
     public List<PostInfo> getAllPosts(){
         return postsDataBase.getAllPosts();
+    }
+
+    public PostInfo getEditPost() {
+        return editPost;
+    }
+
+    public void updatePost(PostInfo post) {
+        if(postsDataBase!=null){
+            postsDataBase.updatePost(post);
+        }
+    }
+
+    public void setEditPost(PostInfo editPost) {
+        this.editPost = editPost;
     }
 }

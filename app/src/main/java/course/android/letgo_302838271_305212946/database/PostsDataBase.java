@@ -59,6 +59,28 @@ public class PostsDataBase extends SQLiteOpenHelper  {
 
     }
 
+
+    public boolean updatePost(PostInfo post) {
+
+        long result = -1;
+        ContentValues values = new ContentValues();
+        values.put(POST_ID, post.getId());
+        values.put(POST_TITLE, post.getTitle());
+        values.put(POST_CONTENT, post.getContent());
+        values.put(POST_TAG, post.getTag());
+        values.put(POST_IMG, post.getImgByteArray());
+
+
+        String [] whereArg = {post.getId()};
+        result = db.update(POSTS_TABLE,values, POST_ID + "=?", whereArg);
+        if(result > 0){
+            return true;
+        }
+        return false;
+    }
+
+
+
     public boolean addNewPostInfo(PostInfo post){
         long result = -1;
         ContentValues values = new ContentValues();
@@ -77,7 +99,13 @@ public class PostsDataBase extends SQLiteOpenHelper  {
     }
 
 
+    public boolean deletPost(PostInfo postInfo)
+    {
 
+        return db.delete(DATABASE_NAME, POST_ID + "=" + postInfo.getId(), null) > 0;
+    }
+
+    // get all posts stored in the data base
     public List<PostInfo> getAllPosts(){
         List<PostInfo> result = new ArrayList<PostInfo>();
         Cursor cursor=null;

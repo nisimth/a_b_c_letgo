@@ -1,4 +1,4 @@
-package course.android.letgo_302838271_305212946;
+package course.android.letgo_302838271_305212946.adapters;
 
 import android.app.Activity;
 import android.content.Context;
@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
+import course.android.letgo_302838271_305212946.R;
 import course.android.letgo_302838271_305212946.core.PostInfo;
 
 /**
@@ -53,16 +54,18 @@ public class PostInfoAdapter extends ArrayAdapter <PostInfo> {
 
         ImageView img = (ImageView) itemView.findViewById(R.id.post_img_txtview);
         TextView title = (TextView) itemView.findViewById(R.id.post_title_txtview);
-        /*TextView content = (TextView) itemView.findViewById(R.id.post_content_txtview);
-        TextView tag = (TextView) itemView.findViewById(R.id.post_tag_txtview) ;*/
+        TextView tag = (TextView) itemView.findViewById(R.id.post_tag_txtview);
+
+
 
 
         PostInfo post = postsList.get(position);
 
         img.setImageBitmap(post.getImg());
         title.setText(post.getTitle());
-        /*content.setText(post.getContent());
-        tag.setText(post.getTag());*/
+        tag.setText(post.getTag());
+
+
 
 
 

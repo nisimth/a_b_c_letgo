@@ -1,10 +1,8 @@
 package course.android.letgo_302838271_305212946;
 
 
+import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.app.Fragment;
 
@@ -15,31 +13,33 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageButton;
+import android.widget.ListView;
 
 
 import java.util.List;
 
 
+import course.android.letgo_302838271_305212946.adapters.PostInfoAdapter;
 import course.android.letgo_302838271_305212946.core.PostInfo;
 import course.android.letgo_302838271_305212946.database.MyInfoManager;
+import course.android.letgo_302838271_305212946.fragments.EditPostInfoFragment;
+import course.android.letgo_302838271_305212946.interfaces.CallBackListiner;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class HomeFragment extends Fragment{
+public class HomeFragment extends Fragment implements CallBackListiner{
 
     private Context context;
 
-    private GridView postsGridView;
+    private GridView postsListView;
     private List <PostInfo> postsList;
-    EditText editText;
     PostInfoAdapter adapter;
 
 
     public HomeFragment() {
         postsList = MyInfoManager.getInstance().getAllPosts();
-
         /*PostInfo p1 = new PostInfo("a","adidas",R.drawable.a);
         PostInfo p2 = new PostInfo("b","nike",R.drawable.b);
         PostInfo p3 = new PostInfo("c","puma",R.drawable.c);
@@ -67,6 +67,18 @@ public class HomeFragment extends Fragment{
     }
 
 
+    private View.OnClickListener selectItemListener = new View.OnClickListener(){
+
+
+        @Override
+        public void onClick(View v) {
+            EditPostInfoFragment fragment = new EditPostInfoFragment();
+            fragment.setTargetFragment(HomeFragment.this,0);
+            Activity act = (Activity) context;
+            fragment.show(act.getFragmentManager(), " edtpostinfodialog");
+        }
+    };
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -77,18 +89,50 @@ public class HomeFragment extends Fragment{
         View rootView = inflater.inflate(R.layout.fragment_home,container,false);
 
 
-        postsGridView = (GridView) rootView.findViewById(R.id.posts_list_view);
+        postsListView = (GridView) rootView.findViewById(R.id.posts_list_view);
         ImageButton addNewPostBtn= (ImageButton) rootView.findViewById(R.id.add_new_post_btn);
 
 
 
 
-        if(postsList!=null && postsList.size()>0){
-            adapter = new PostInfoAdapter(context,R.layout.post_item_list_layout,postsList);
-            postsGridView.setAdapter(adapter);
-        }
+
+
+
+
+
+        addNewPostBtn.setOnClickListener(new View.OnClickListener(){
+
+            //open camera to shoot a picture and to add it to the data base
+            @Override
+            public void onClick(View v) {
+
+                EditPostInfoFragment fragment = new EditPostInfoFragment();
+                fragment.setTargetFragment(HomeFragment.this,0);
+                Activity act = (Activity) context;
+                fragment.show(act.getFragmentManager(), " edtpostinfodialog");
+                initData();
+            }
+        });
+
+
+
+       initData();
         return rootView;
     }
 
-}
+
+
+    private void initData() {
+        postsList = MyInfoManager.getInstance().getAllPosts();
+        if (postsList != null && postsList.size() > 0) {
+            adapter = new PostInfoAdapter(context, R.layout.post_item_list_layout, postsList);
+            postsListView.setAdapter(adapter);
+        }
+    }
+        @Override
+        public void saveButtonOnClicked () {
+            initData();
+        }
+    }
+
 //

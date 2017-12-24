@@ -1,6 +1,7 @@
 package course.android.letgo_302838271_305212946.fragments;
 
 
+import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Context;
 import android.os.Bundle;
@@ -22,6 +23,7 @@ import course.android.letgo_302838271_305212946.fragments.MyProfileRelatedFragme
 public class MyProfileFragment extends Fragment {
 
     private Context context ;
+    private FragmentManager fm;
 
     private View.OnClickListener onMySellingClickListener = new View.OnClickListener() {
         @Override
@@ -29,6 +31,7 @@ public class MyProfileFragment extends Fragment {
             MySellingFragment mySellingFragment = new MySellingFragment();
             FragmentTransaction t = getChildFragmentManager().beginTransaction();
             t.replace(R.id.content_view, mySellingFragment);
+            t.addToBackStack(null);
             t.commit();
 
         }
@@ -68,13 +71,20 @@ public class MyProfileFragment extends Fragment {
         context = getActivity();
         View rootView = inflater.inflate(R.layout.fragment_my_profile, container, false);
 
-        Button mySellingBtn= (Button) rootView.findViewById(R.id.selling_btn);
+        fm = getFragmentManager();
+        FragmentTransaction ft = fm.beginTransaction();
+        MySellingFragment sell = new MySellingFragment();
+        ft.replace(R.id.content_view, sell );
+        ft.addToBackStack(null);
+        ft.commit();
+
+        Button mySellingBtn = (Button) rootView.findViewById(R.id.selling_btn);
         mySellingBtn.setOnClickListener(onMySellingClickListener);
 
-        Button mySoldBtn= (Button) rootView.findViewById(R.id.sold_btn);
+        Button mySoldBtn = (Button) rootView.findViewById(R.id.sold_btn);
         mySoldBtn.setOnClickListener(onMySoldClickListener);
 
-        Button myFavoritesBtn= (Button) rootView.findViewById(R.id.favorites_btn);
+        Button myFavoritesBtn = (Button) rootView.findViewById(R.id.favorites_btn);
         myFavoritesBtn.setOnClickListener(onMyFavoritesClickListener);
 
         return rootView;

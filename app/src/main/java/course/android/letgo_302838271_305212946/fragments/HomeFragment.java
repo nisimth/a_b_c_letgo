@@ -7,6 +7,9 @@ import android.os.Bundle;
 import android.app.Fragment;
 
 
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +21,7 @@ import java.util.List;
 
 
 import course.android.letgo_302838271_305212946.R;
+import course.android.letgo_302838271_305212946.adapters.HomeRecyclerViewAdapter;
 import course.android.letgo_302838271_305212946.adapters.PostInfoAdapter;
 import course.android.letgo_302838271_305212946.core.PostInfo;
 import course.android.letgo_302838271_305212946.database.MyInfoManager;
@@ -29,15 +33,16 @@ import course.android.letgo_302838271_305212946.interfaces.CallBackListiner;
  */
 public class HomeFragment extends Fragment implements CallBackListiner{
 
+    private RecyclerView homeRecyclerView;
     private Context context;
 
-    private GridView postsListView;
+   /* private GridView postsListView;
     private List <PostInfo> postsList;
-    PostInfoAdapter adapter;
+    PostInfoAdapter adapter;*/
 
 
     public HomeFragment() {
-        postsList = MyInfoManager.getInstance().getAllPosts();
+        //postsList = MyInfoManager.getInstance().getAllPosts();
         /*PostInfo p1 = new PostInfo("a","adidas",R.drawable.a);
         PostInfo p2 = new PostInfo("b","nike",R.drawable.b);
         PostInfo p3 = new PostInfo("c","puma",R.drawable.c);
@@ -66,8 +71,6 @@ public class HomeFragment extends Fragment implements CallBackListiner{
 
 
     private View.OnClickListener selectItemListener = new View.OnClickListener(){
-
-
         @Override
         public void onClick(View v) {
             EditPostInfoFragment fragment = new EditPostInfoFragment();
@@ -82,28 +85,15 @@ public class HomeFragment extends Fragment implements CallBackListiner{
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         context = getActivity();
-
-
         View rootView = inflater.inflate(R.layout.fragment_home,container,false);
-
-
-        postsListView = (GridView) rootView.findViewById(R.id.posts_list_view);
+        homeRecyclerView = (RecyclerView) rootView.findViewById(R.id.home_recycler_view);
+        //postsListView = (GridView) rootView.findViewById(R.id.posts_list_view);
         ImageButton addNewPostBtn= (ImageButton) rootView.findViewById(R.id.add_new_post_btn);
 
-
-
-
-
-
-
-
-
         addNewPostBtn.setOnClickListener(new View.OnClickListener(){
-
             //open camera to shoot a picture and to add it to the data base
             @Override
             public void onClick(View v) {
-
                 EditPostInfoFragment fragment = new EditPostInfoFragment();
                 fragment.setTargetFragment(HomeFragment.this,0);
                 Activity act = (Activity) context;
@@ -112,20 +102,29 @@ public class HomeFragment extends Fragment implements CallBackListiner{
             }
         });
 
-
-
-       initData();
+        initData();
         return rootView;
     }
 
 
 
     private void initData() {
-        postsList = MyInfoManager.getInstance().getAllPosts();
+       /* postsList = MyInfoManager.getInstance().getAllPosts();
         if (postsList != null && postsList.size() > 0) {
             adapter = new PostInfoAdapter(context, R.layout.post_item_list_layout, postsList);
             postsListView.setAdapter(adapter);
-        }
+        }*/
+       List<PostInfo> posts = MyInfoManager.getInstance().getAllPosts();
+       if( posts != null && posts.size() > 0 ){
+           HomeRecyclerViewAdapter adapter = new HomeRecyclerViewAdapter(posts,this);
+           LinearLayoutManager ll = new LinearLayoutManager(context);
+           ll.setOrientation(LinearLayoutManager.VERTICAL);
+
+           GridLayoutManager gl = new GridLayoutManager(context,2);
+
+           homeRecyclerView.setLayoutManager(gl);
+           homeRecyclerView.setAdapter(adapter);
+       }
     }
         @Override
         public void saveButtonOnClicked () {

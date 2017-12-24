@@ -105,14 +105,13 @@
          </LinearLayout>
        </HorizontalScrollView>
        
-       <GridView
-        android:id="@+id/posts_list_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+       <android.support.v7.widget.RecyclerView
 
-        android:numColumns="3"
-        android:columnWidth="100dp">
-       </GridView>
+           android:id="@+id/home_recycler_view"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content">
+
+       </android.support.v7.widget.RecyclerView>
        
     </LinearLayout>
     <ImageButton

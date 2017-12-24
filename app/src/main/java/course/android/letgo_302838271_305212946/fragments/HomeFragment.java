@@ -1,4 +1,4 @@
-package course.android.letgo_302838271_305212946;
+package course.android.letgo_302838271_305212946.fragments;
 
 
 import android.app.Activity;
@@ -10,19 +10,17 @@ import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageButton;
-import android.widget.ListView;
 
 
 import java.util.List;
 
 
+import course.android.letgo_302838271_305212946.R;
 import course.android.letgo_302838271_305212946.adapters.PostInfoAdapter;
 import course.android.letgo_302838271_305212946.core.PostInfo;
 import course.android.letgo_302838271_305212946.database.MyInfoManager;
-import course.android.letgo_302838271_305212946.fragments.EditPostInfoFragment;
 import course.android.letgo_302838271_305212946.interfaces.CallBackListiner;
 
 

@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="course.android.letgo_302838271_305212946.HomeFragment">
+    tools:context="course.android.letgo_302838271_305212946.fragments.HomeFragment">
 
     <!-- TODO: Update blank fragment layout -->
    <LinearLayout
@@ -119,7 +119,10 @@
         android:id="@+id/add_new_post_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@android:drawable/ic_menu_edit"
-        android:layout_gravity="bottom|center"
+        android:src="@drawable/addbtn"
+        android:layout_gravity="bottom|left"
+        android:background="@drawable/addbtn"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="20dp"
         />
 </FrameLayout>

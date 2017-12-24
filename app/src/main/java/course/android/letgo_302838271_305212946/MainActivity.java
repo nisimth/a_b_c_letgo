@@ -4,17 +4,13 @@ package course.android.letgo_302838271_305212946;
 import android.app.Activity;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.FrameLayout;
-
-import java.util.Locale;
 
 import course.android.letgo_302838271_305212946.database.MyInfoManager;
+import course.android.letgo_302838271_305212946.fragments.ChatsFragment;
+import course.android.letgo_302838271_305212946.fragments.HomeFragment;
+import course.android.letgo_302838271_305212946.fragments.MyProfileFragment;
 
 
 public class MainActivity extends Activity {
@@ -53,9 +49,19 @@ public class MainActivity extends Activity {
         FragmentManager fm = getFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
         HomeFragment home = new HomeFragment();
-        ft.add(R.id.root_view,home);
+        ft.add(R.id.root_view, home);
+        ft.addToBackStack(null);
         ft.commit();
     }
 
 
+    public void proflieOnClick(View view) {
+        FragmentManager fm = getFragmentManager();
+        FragmentTransaction ft = fm.beginTransaction();
+        MyProfileFragment profileFragment = new MyProfileFragment();
+        ft.replace(R.id.root_view,profileFragment);
+        ft.addToBackStack(null);
+        ft.commit();
+    }
 }
+

@@ -13,7 +13,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.GridView;
 import android.widget.ImageButton;
 
 
@@ -22,7 +21,6 @@ import java.util.List;
 
 import course.android.letgo_302838271_305212946.R;
 import course.android.letgo_302838271_305212946.adapters.HomeRecyclerViewAdapter;
-import course.android.letgo_302838271_305212946.adapters.PostInfoAdapter;
 import course.android.letgo_302838271_305212946.core.PostInfo;
 import course.android.letgo_302838271_305212946.database.MyInfoManager;
 import course.android.letgo_302838271_305212946.interfaces.CallBackListiner;
@@ -73,7 +71,7 @@ public class HomeFragment extends Fragment implements CallBackListiner{
     private View.OnClickListener selectItemListener = new View.OnClickListener(){
         @Override
         public void onClick(View v) {
-            EditPostInfoFragment fragment = new EditPostInfoFragment();
+            AddPostInfoFragment fragment = new AddPostInfoFragment();
             fragment.setTargetFragment(HomeFragment.this,0);
             Activity act = (Activity) context;
             fragment.show(act.getFragmentManager(), " edtpostinfodialog");
@@ -94,13 +92,15 @@ public class HomeFragment extends Fragment implements CallBackListiner{
             //open camera to shoot a picture and to add it to the data base
             @Override
             public void onClick(View v) {
-                EditPostInfoFragment fragment = new EditPostInfoFragment();
+                AddPostInfoFragment fragment = new AddPostInfoFragment();
                 fragment.setTargetFragment(HomeFragment.this,0);
                 Activity act = (Activity) context;
                 fragment.show(act.getFragmentManager(), " edtpostinfodialog");
                 initData();
             }
         });
+
+
 
         initData();
         return rootView;

@@ -20,18 +20,29 @@
              android:layout_height="wrap_content"
              android:layout_margin="5dp"
              android:background="#e2e2e2">
-           
+
+          <LinearLayout
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:orientation="vertical">
            <ImageButton
-               android:id="@+id/car_btn"
+               android:id="@+id/car_tag_btn"
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
                android:src="@drawable/car"
                android:background="#e2e2e2"
                android:layout_margin="5dp"
                />
+             <TextView
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:text=" cars"
+                 android:textSize="20dp"
+                 android:layout_gravity="center"/>
+          </LinearLayout>
 
            <ImageButton
-               android:id="@+id/tech_btn"
+               android:id="@+id/tech_tag_btn"
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
                android:src="@drawable/tech"
@@ -39,8 +50,9 @@
                android:layout_margin="5dp"
                />
 
-           <ImageButton
-               android:id="@+id/homeC_btn"
+
+             <ImageButton
+               android:id="@+id/home_tag_btn"
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
                android:src="@drawable/homec"
@@ -49,7 +61,7 @@
                />
 
            <ImageButton
-               android:id="@+id/leisure_btn"
+               android:id="@+id/leisure_tag_btn"
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
                android:src="@drawable/leisure"
@@ -58,7 +70,7 @@
                />
 
              <ImageButton
-                 android:id="@+id/motors_btn"
+                 android:id="@+id/motors_tag_btn"
                  android:layout_width="wrap_content"
                  android:layout_height="wrap_content"
                  android:src="@drawable/motors"
@@ -66,8 +78,9 @@
                  android:background="#e2e2e2"
                   />
 
+
              <ImageButton
-               android:id="@+id/fation_btn"
+               android:id="@+id/fation_tag_btn"
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
                android:src="@drawable/fashion"
@@ -76,7 +89,7 @@
                />
 
            <ImageButton
-               android:id="@+id/child_btn"
+               android:id="@+id/child_tag_btn"
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
                android:src="@drawable/child"
@@ -85,7 +98,7 @@
                />
 
            <ImageButton
-               android:id="@+id/entertaiment_btn"
+               android:id="@+id/entertaiment_tag_btn"
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
                android:src="@drawable/enteratimaet"
@@ -93,8 +106,8 @@
                android:layout_margin="5dp"
                />
 
-           <ImageButton
-               android:id="@+id/other_btn"
+             <ImageButton
+               android:id="@+id/other_tag_btn"
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
                android:src="@drawable/other"

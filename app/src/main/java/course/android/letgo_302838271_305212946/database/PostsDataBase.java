@@ -5,7 +5,11 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.graphics.Bitmap;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -88,7 +92,15 @@ public class PostsDataBase extends SQLiteOpenHelper  {
         values.put(POST_TITLE,post.getTitle());
         values.put(POST_CONTENT,post.getContent());
         values.put(POST_TAG,post.getTag());
-        values.put(POST_IMG,post.getImgByteArray());
+        //values.put(POST_IMG,post.getImgByteArray());
+
+        Bitmap postImg = post.getImg();
+        if (postImg != null) {
+            byte[] data = getBitmapAsByteArray(postImg);
+            if (data != null && data.length > 0) {
+                values.put(POST_IMG, data);
+            }
+        }
 
         result = db.insert(POSTS_TABLE,null,values);
 
@@ -97,7 +109,13 @@ public class PostsDataBase extends SQLiteOpenHelper  {
         }
         return false;
     }
-
+///////////////////////////////////////////////////////
+    private byte[] getBitmapAsByteArray(Bitmap bitmap) {
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 0, outputStream);
+        return outputStream.toByteArray();
+    }
+//////////////////////////////////////////////////////
 
     public boolean deletPost(PostInfo postInfo)
     {
@@ -136,7 +154,36 @@ public class PostsDataBase extends SQLiteOpenHelper  {
         return result;
     }
 
+   /* public List<PostInfo> getPostsByTag( ImageButton tag ){
+        List<PostInfo> result = new ArrayList<PostInfo>();
+        Cursor cursor=null;
+        try {
+            cursor = db.query(POSTS_TABLE, POSTS_COLUMNS, null, null, null, tag.toString(), null);
+            if (cursor != null && cursor.getCount() > 0) {
+                cursor.moveToFirst();
+                while (!cursor.isAfterLast()) {
+                    PostInfo post = new PostInfo();
+                    post.setId(cursor.getString(0));
+                    post.setTitle(cursor.getString(1));
+                    post.setContent(cursor.getString(2));
+                    post.setTag(cursor.getString(3));
+                    post.setImgFromByteArray(cursor.getBlob(4));
+                    // img //
+                    result.add(post);
+                    cursor.moveToNext();
+                }
+            }
+        }catch (Throwable t){
+            t.printStackTrace();
+        }
+        finally {
+            if(cursor!=null){
+                cursor.close();
 
+            }
+        }
+        return result;
+    }*/
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {

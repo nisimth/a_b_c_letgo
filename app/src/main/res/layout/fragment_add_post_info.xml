@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="course.android.letgo_302838271_305212946.fragments.EditPostInfoFragment">
+    tools:context="course.android.letgo_302838271_305212946.fragments.AddPostInfoFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -52,6 +52,14 @@
             android:layout_gravity="center"
             android:layout_marginTop="25dp"
 
+            />
+
+        <Button
+            android:id="@+id/bennyBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:text="CHOOSE"
             />
 
 

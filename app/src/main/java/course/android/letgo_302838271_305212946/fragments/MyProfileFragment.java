@@ -43,6 +43,7 @@ public class MyProfileFragment extends Fragment {
             MySoldFragment mySoldFragment = new MySoldFragment();
             FragmentTransaction t = getChildFragmentManager().beginTransaction();
             t.replace(R.id.content_view, mySoldFragment);
+            t.addToBackStack(null);
             t.commit();
 
         }
@@ -54,6 +55,7 @@ public class MyProfileFragment extends Fragment {
             MyFavoritesFragment myFavoritesFragment = new MyFavoritesFragment();
             FragmentTransaction t = getChildFragmentManager().beginTransaction();
             t.replace(R.id.content_view, myFavoritesFragment);
+            t.addToBackStack(null);
             t.commit();
 
         }
@@ -71,12 +73,14 @@ public class MyProfileFragment extends Fragment {
         context = getActivity();
         View rootView = inflater.inflate(R.layout.fragment_my_profile, container, false);
 
-        fm = getFragmentManager();
-        FragmentTransaction ft = fm.beginTransaction();
-        MySellingFragment sell = new MySellingFragment();
-        ft.replace(R.id.content_view, sell );
-        ft.addToBackStack(null);
-        ft.commit();
+//        fm = getFragmentManager();
+//        FragmentTransaction ft = fm.beginTransaction();
+//        MySellingFragment sell = new MySellingFragment();
+//        ft.replace(R.id.content_view, sell );
+//        ft.addToBackStack(null);
+//        ft.commit();
+
+
 
         Button mySellingBtn = (Button) rootView.findViewById(R.id.selling_btn);
         mySellingBtn.setOnClickListener(onMySellingClickListener);
@@ -87,6 +91,11 @@ public class MyProfileFragment extends Fragment {
         Button myFavoritesBtn = (Button) rootView.findViewById(R.id.favorites_btn);
         myFavoritesBtn.setOnClickListener(onMyFavoritesClickListener);
 
+        MySellingFragment mySellingFragment = new MySellingFragment();
+        FragmentTransaction t = getChildFragmentManager().beginTransaction();
+        t.replace(R.id.content_view, mySellingFragment);
+        t.addToBackStack(null);
+        t.commit();
         return rootView;
     }
 

@@ -14,7 +14,7 @@ public class PostInfo {
     private String id;
     private String title;
     private String content;
-    private String tag;
+    private String tag; // category
     private Bitmap img;
 
     public PostInfo(String title,String content,String tag, Bitmap img) {
@@ -90,7 +90,7 @@ public class PostInfo {
 
     public void setImgFromByteArray(byte[] imgFromByteArray) {
         if (imgFromByteArray != null) {
-            img = BitmapFactory.decodeByteArray(imgFromByteArray, 0, imgFromByteArray.length);
+            img = BitmapFactory.decodeByteArray(imgFromByteArray, 0 , imgFromByteArray.length);
         }
     }
 

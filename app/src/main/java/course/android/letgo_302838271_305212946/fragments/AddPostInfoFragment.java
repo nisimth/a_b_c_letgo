@@ -1,14 +1,13 @@
 package course.android.letgo_302838271_305212946.fragments;
 
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
 import android.provider.MediaStore;
 import android.app.Fragment;
 import android.view.LayoutInflater;
@@ -20,8 +19,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 
-import java.io.File;
-
 import course.android.letgo_302838271_305212946.R;
 import course.android.letgo_302838271_305212946.core.PostInfo;
 import course.android.letgo_302838271_305212946.database.MyInfoManager;
@@ -30,7 +27,7 @@ import course.android.letgo_302838271_305212946.interfaces.CallBackListiner;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class EditPostInfoFragment extends DialogFragment {
+public class AddPostInfoFragment extends DialogFragment {
     private static final int CONTENTT_REQUEST = 111;
 
 
@@ -45,10 +42,50 @@ public class EditPostInfoFragment extends DialogFragment {
     private int targetRequestCode;
     private Intent intent;
     private Context context;
+    private Bitmap tempimage;
 
+    private Button benny ;
 
-    public EditPostInfoFragment() {
+    public AddPostInfoFragment() {
         // Required empty public constructor
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        context=getActivity();
+        View rootview = inflater.inflate(R.layout.fragment_add_post_info, container, false);
+        callback = (CallBackListiner) getTargetFragment();
+        targetRequestCode = getTargetRequestCode();
+
+        titleField = (EditText) rootview.findViewById(R.id.post_title_field);
+        contentField = (EditText) rootview.findViewById(R.id.post_content_field);
+        postPhoto = (ImageView) rootview.findViewById(R.id.post_img_field);
+        takePhoto = (Button) rootview.findViewById(R.id.post_take_photo_btn);
+
+        saveBtn = (Button) rootview.findViewById(R.id.save_post_btn);
+        spinner = (Spinner) rootview.findViewById(R.id.post_tag_spinner);
+
+        adapter = ArrayAdapter.createFromResource(context, R.array.tags,android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+
+        saveBtn.setOnClickListener(savePostListener);
+        takePhoto.setOnClickListener(takePhotoListiner);
+
+        benny = (Button)rootview.findViewById(R.id.bennyBtn);
+        benny.setOnClickListener(new View.OnClickListener(){
+            //open dialog fram
+            @Override
+            public void onClick(View v) {
+                CameraOrGalleryDialogFragment fragment = new CameraOrGalleryDialogFragment();
+                fragment.setTargetFragment(AddPostInfoFragment.this,0);
+                Activity act = (Activity) context;
+                fragment.show(act.getFragmentManager(), " edtpostinfodialog");
+            }
+        });
+
+        return rootview;
     }
 
     private View.OnClickListener savePostListener= new View.OnClickListener() {
@@ -57,7 +94,9 @@ public class EditPostInfoFragment extends DialogFragment {
             String postTitle = titleField.getText().toString();
             String postContent = contentField.getText().toString();
             String postTag = spinner.getSelectedItem().toString();;
-            Bitmap photo = postPhoto.getDrawingCache();
+           // Bitmap photo = postPhoto.getDrawingCache();
+            Bitmap photo = tempimage;
+
 
             if(targetRequestCode == 0) {
                 PostInfo post = new PostInfo();
@@ -86,10 +125,7 @@ public class EditPostInfoFragment extends DialogFragment {
 
         @Override
         public void onClick(View v) {
-
             intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-
-
             startActivityForResult(intent,CONTENTT_REQUEST);
 
         }
@@ -98,43 +134,13 @@ public class EditPostInfoFragment extends DialogFragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == CONTENTT_REQUEST ) {
-
+        if(requestCode == CONTENTT_REQUEST  ) {
             Bundle extras = data.getExtras();
+
             Bitmap bmp = (Bitmap) extras.get("data");
             postPhoto.setImageBitmap(bmp);
-
-
+            tempimage = bmp;
         }
-
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        context=getActivity();
-        View rootview = inflater.inflate(R.layout.fragment_edit_post_info, container, false);
-        callback = (CallBackListiner) getTargetFragment();
-        targetRequestCode = getTargetRequestCode();
-
-        titleField = (EditText) rootview.findViewById(R.id.post_title_field);
-        contentField = (EditText) rootview.findViewById(R.id.post_content_field);
-        postPhoto = (ImageView) rootview.findViewById(R.id.post_img_field);
-        takePhoto = (Button) rootview.findViewById(R.id.post_take_photo_btn);
-
-        saveBtn = (Button) rootview.findViewById(R.id.save_post_btn);
-        spinner = (Spinner) rootview.findViewById(R.id.post_tag_spinner);
-
-        adapter = ArrayAdapter.createFromResource(context, R.array.tags,android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
-
-
-        saveBtn.setOnClickListener(savePostListener);
-        takePhoto.setOnClickListener(takePhotoListiner);
-
-
-        return rootview;
     }
 
     @Override

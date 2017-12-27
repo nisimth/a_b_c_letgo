@@ -4,8 +4,10 @@ package course.android.letgo_302838271_305212946;
 import android.app.Activity;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 
 import course.android.letgo_302838271_305212946.database.MyInfoManager;
 import course.android.letgo_302838271_305212946.fragments.ChatsFragment;
@@ -32,6 +34,7 @@ public class MainActivity extends Activity {
         ft.addToBackStack(null);
         ft.commit();
 
+
     }
     @Override
     protected void onResume() {
@@ -49,9 +52,10 @@ public class MainActivity extends Activity {
         FragmentManager fm = getFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
         HomeFragment home = new HomeFragment();
-        ft.add(R.id.root_view, home);
+        ft.replace(R.id.root_view, home);
         ft.addToBackStack(null);
         ft.commit();
+
     }
 
 
@@ -63,5 +67,17 @@ public class MainActivity extends Activity {
         ft.addToBackStack(null);
         ft.commit();
     }
+
+    /*private void hideKeyboard() {
+        try {
+            View view = this.getCurrentFocus();
+            if (view != null) {
+                final InputMethodManager imm = (InputMethodManager) this.getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+            }
+        } catch (Throwable t) {
+            t.printStackTrace();
+        }
+    }*/
 }
 

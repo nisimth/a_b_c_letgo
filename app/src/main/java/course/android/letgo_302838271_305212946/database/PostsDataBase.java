@@ -6,8 +6,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.graphics.Bitmap;
-import android.widget.ImageButton;
-import android.widget.ImageView;
 
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;

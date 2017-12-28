@@ -1,0 +1,55 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="course.android.letgo_302838271_305212946.fragments.PostInfoFragmentDialog">
+
+    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageButton
+                android:id="@+id/postinfodialog_exit_btn"
+                android:src="@android:drawable/ic_delete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <ImageButton
+                android:id="@+id/postinfodialog_addtofavorites_btn"
+                android:src="@drawable/like"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginLeft="260dp"
+                />
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/postinfodialog_img"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center"/>
+
+        <TextView
+            android:id="@+id/postinfodialog_itemname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center"
+            android:textSize="20sp"/>
+
+
+
+
+
+
+
+
+
+
+    </LinearLayout>
+
+</FrameLayout>

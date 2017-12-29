@@ -9,7 +9,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import java.util.List;
 
@@ -62,16 +61,16 @@ public class HomeRecyclerViewAdapter extends RecyclerView.Adapter<HomeRecyclerVi
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        private TextView title , tag ;
+        //private TextView title , tag ;
         private ImageView image ;
         private PostInfo data ;
         private ItemClickListener itemClickListener;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            title = (TextView)itemView.findViewById(R.id.post_title_txtview);
-            tag = (TextView)itemView.findViewById(R.id.post_tag_txtview);
-            image = (ImageView)itemView.findViewById(R.id.post_img_txtview);
+            //title = (TextView)itemView.findViewById(R.id.post_title_txtview);
+            //tag = (TextView)itemView.findViewById(R.id.post_tag_txtview);
+            image = (ImageView)itemView.findViewById(R.id.post_img_imgView);
             itemView.setOnClickListener(this);
 
 
@@ -93,8 +92,8 @@ public class HomeRecyclerViewAdapter extends RecyclerView.Adapter<HomeRecyclerVi
 
         public void setData(PostInfo data){
             this.data = data ;
-            title.setText(data.getTitle());
-            tag.setText(data.getTag());
+            //title.setText(data.getTitle());
+            //tag.setText(data.getTag());
             image.setImageBitmap(data.getImg());
         }
 
@@ -112,7 +111,9 @@ public class HomeRecyclerViewAdapter extends RecyclerView.Adapter<HomeRecyclerVi
     private void openDialogFragment(PostInfo data){
         // bundle data
         Bundle b = new Bundle();
-        b.putString("NAME_KEY",data.getTitle());
+        b.putString("AMOUNT_KEY",data.getItemPrice());
+        b.putString("CURRENCY_KEY",data.getItemPriceCurrency());
+        b.putString("DESC_KEY",data.getContent());
         b.putByteArray("IMAGE_KEY",data.getImgByteArray());
 
 

@@ -5,19 +5,15 @@ import android.content.Context;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 import course.android.letgo_302838271_305212946.R;
 import course.android.letgo_302838271_305212946.core.PostInfo;
@@ -52,7 +48,7 @@ public class PostInfoAdapter extends ArrayAdapter <PostInfo> {
         LayoutInflater inflater = (LayoutInflater)  context.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
         View itemView = inflater.inflate(R.layout.post_item_list_layout,null,false);
 
-        ImageView img = (ImageView) itemView.findViewById(R.id.post_img_txtview);
+        ImageView img = (ImageView) itemView.findViewById(R.id.post_img_imgView);
         TextView title = (TextView) itemView.findViewById(R.id.post_title_txtview);
         TextView tag = (TextView) itemView.findViewById(R.id.post_tag_txtview);
 

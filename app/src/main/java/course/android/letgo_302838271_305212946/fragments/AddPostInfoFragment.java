@@ -18,6 +18,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.SpinnerAdapter;
 
 import course.android.letgo_302838271_305212946.R;
 import course.android.letgo_302838271_305212946.core.PostInfo;
@@ -33,11 +34,14 @@ public class AddPostInfoFragment extends DialogFragment {
 
     private EditText titleField;
     private EditText contentField;
+    private EditText amountField;
     private ImageView postPhoto;
     private Button saveBtn;
     private Button takePhoto;
-    private Spinner spinner;
-    private ArrayAdapter <CharSequence> adapter;
+    private Spinner tagSpinner;
+    private Spinner currencySpinner ;
+    private ArrayAdapter <CharSequence> tagSpinnerAdapter;
+    private ArrayAdapter <CharSequence> currencySpinnerAdapter;
     private CallBackListiner callback;
     private int targetRequestCode;
     private Intent intent;
@@ -63,19 +67,28 @@ public class AddPostInfoFragment extends DialogFragment {
         postPhoto = (ImageView) rootview.findViewById(R.id.post_img_field);
         takePhoto = (Button) rootview.findViewById(R.id.post_take_photo_btn);
 
-        saveBtn = (Button) rootview.findViewById(R.id.save_post_btn);
-        spinner = (Spinner) rootview.findViewById(R.id.post_tag_spinner);
+        amountField = (EditText) rootview.findViewById(R.id.amount_field);
+        currencySpinner = (Spinner) rootview.findViewById(R.id.currency_spinner);
 
-        adapter = ArrayAdapter.createFromResource(context, R.array.tags,android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
+        saveBtn = (Button) rootview.findViewById(R.id.save_post_btn);
+        tagSpinner = (Spinner) rootview.findViewById(R.id.post_tag_spinner);
+
+        /* adapter to currency spinner */
+        currencySpinnerAdapter = ArrayAdapter.createFromResource(context , R.array.currency,android.R.layout.simple_spinner_item);
+        currencySpinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        currencySpinner.setAdapter(currencySpinnerAdapter);
+
+        /* adapter to tag spinner */
+        tagSpinnerAdapter = ArrayAdapter.createFromResource(context, R.array.tags,android.R.layout.simple_spinner_item);
+        tagSpinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        tagSpinner.setAdapter(tagSpinnerAdapter);
 
         saveBtn.setOnClickListener(savePostListener);
         takePhoto.setOnClickListener(takePhotoListiner);
 
         benny = (Button)rootview.findViewById(R.id.bennyBtn);
         benny.setOnClickListener(new View.OnClickListener(){
-            //open dialog fram
+            //open dialog fragment
             @Override
             public void onClick(View v) {
                 CameraOrGalleryDialogFragment fragment = new CameraOrGalleryDialogFragment();
@@ -93,7 +106,9 @@ public class AddPostInfoFragment extends DialogFragment {
         public void onClick(View view) {
             String postTitle = titleField.getText().toString();
             String postContent = contentField.getText().toString();
-            String postTag = spinner.getSelectedItem().toString();;
+            String postAmount = amountField.getText().toString();
+            String postCurrency = currencySpinner.getSelectedItem().toString();
+            String postTag = tagSpinner.getSelectedItem().toString();;
            // Bitmap photo = postPhoto.getDrawingCache();
             Bitmap photo = tempimage;
 
@@ -102,6 +117,8 @@ public class AddPostInfoFragment extends DialogFragment {
                 PostInfo post = new PostInfo();
                 post.setTitle(postTitle);
                 post.setContent(postContent);
+                post.setItemPrice(postAmount);
+                post.setItemPriceCurrency(postCurrency);
                 post.setTag(postTag);
                 post.setImg(photo);
                 MyInfoManager.getInstance().addNewPost(post);
@@ -110,6 +127,8 @@ public class AddPostInfoFragment extends DialogFragment {
                 PostInfo post = MyInfoManager.getInstance().getEditPost();
                 post.setTitle(postTitle);
                 post.setContent(postContent);
+                post.setItemPrice(postAmount);
+                post.setItemPriceCurrency(postCurrency);
                 post.setTag(postTag);
                 post.setImg(photo);
                 MyInfoManager.getInstance().updatePost(post);

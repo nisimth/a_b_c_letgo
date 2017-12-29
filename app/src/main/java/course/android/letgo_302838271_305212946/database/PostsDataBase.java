@@ -29,10 +29,13 @@ public class PostsDataBase extends SQLiteOpenHelper  {
     private static final String POST_ID ="id";
     private static final String POST_TITLE = "title";
     private static final String POST_CONTENT = "content";
+    private static final String POST_ITEM_PRICE = "price"; // add new column of price
+    private static final String POST_ITEM_PRICE_CURRENCY = "priceCurrency"; // add new column of price currency
     private static final String POST_TAG = "tag";
     private static final String POST_IMG = "img";
 
-    public static final  String[] POSTS_COLUMNS = { POST_ID,POST_TITLE,POST_CONTENT,POST_TAG,POST_IMG };
+    public static final  String[] POSTS_COLUMNS =
+            { POST_ID,POST_TITLE,POST_CONTENT,POST_ITEM_PRICE,POST_ITEM_PRICE_CURRENCY,POST_TAG,POST_IMG };
     public PostsDataBase(Context context) {
         super(context, DATABASE_NAME, null, VERSION);
     }
@@ -42,10 +45,12 @@ public class PostsDataBase extends SQLiteOpenHelper  {
     public void onCreate(SQLiteDatabase db) {
         String createPostsTableSqL = "create table if not exists " + POSTS_TABLE + "(" +
                 POST_ID + " text primary key, "
-                +POST_TITLE + " text, "
-                +POST_CONTENT + " text, "
-                +POST_TAG + " text, "
-                +POST_IMG + " blob "
+                + POST_TITLE + " text, "
+                + POST_CONTENT + " text, "
+                + POST_ITEM_PRICE + " text, "
+                + POST_ITEM_PRICE_CURRENCY + " text, "
+                + POST_TAG + " text, "
+                + POST_IMG + " blob "
                 + ")";
         db.execSQL(createPostsTableSqL);
     }
@@ -69,6 +74,8 @@ public class PostsDataBase extends SQLiteOpenHelper  {
         values.put(POST_ID, post.getId());
         values.put(POST_TITLE, post.getTitle());
         values.put(POST_CONTENT, post.getContent());
+        values.put(POST_ITEM_PRICE, post.getItemPrice());
+        values.put(POST_ITEM_PRICE_CURRENCY, post.getItemPriceCurrency());
         values.put(POST_TAG, post.getTag());
         values.put(POST_IMG, post.getImgByteArray());
 
@@ -89,6 +96,8 @@ public class PostsDataBase extends SQLiteOpenHelper  {
         values.put(POST_ID,post.getId());
         values.put(POST_TITLE,post.getTitle());
         values.put(POST_CONTENT,post.getContent());
+        values.put(POST_ITEM_PRICE,post.getItemPrice());
+        values.put(POST_ITEM_PRICE_CURRENCY, post.getItemPriceCurrency());
         values.put(POST_TAG,post.getTag());
         //values.put(POST_IMG,post.getImgByteArray());
 
@@ -126,7 +135,7 @@ public class PostsDataBase extends SQLiteOpenHelper  {
         List<PostInfo> result = new ArrayList<PostInfo>();
         Cursor cursor=null;
         try {
-            cursor = db.query(POSTS_TABLE, POSTS_COLUMNS, null, null, null, null, null);
+            cursor = db.query( POSTS_TABLE, POSTS_COLUMNS, null , null, null , null , null , null  );
             if (cursor != null && cursor.getCount() > 0) {
                 cursor.moveToFirst();
                 while (!cursor.isAfterLast()) {
@@ -134,8 +143,10 @@ public class PostsDataBase extends SQLiteOpenHelper  {
                     post.setId(cursor.getString(0));
                     post.setTitle(cursor.getString(1));
                     post.setContent(cursor.getString(2));
-                    post.setTag(cursor.getString(3));
-                    post.setImgFromByteArray(cursor.getBlob(4));
+                    post.setItemPrice(cursor.getString(3));
+                    post.setItemPriceCurrency(cursor.getString(4));
+                    post.setTag(cursor.getString(5));
+                    post.setImgFromByteArray(cursor.getBlob(6));
                     result.add(post);
                     cursor.moveToNext();
                 }

@@ -5,51 +5,207 @@
     tools:context="course.android.letgo_302838271_305212946.fragments.PostInfoFragmentDialog">
 
     <!-- TODO: Update blank fragment layout -->
-    <LinearLayout
+    <RelativeLayout
+        android:id="@+id/main_display"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <ImageButton
-                android:id="@+id/postinfodialog_exit_btn"
-                android:src="@android:drawable/ic_delete"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-            <ImageButton
-                android:id="@+id/postinfodialog_addtofavorites_btn"
-                android:src="@drawable/like"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:layout_marginLeft="260dp"
-                />
-
-        </LinearLayout>
+        android:layout_height="match_parent"
+        android:background="@android:color/black"
+        >
 
         <ImageView
-            android:id="@+id/postinfodialog_img"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_gravity="center"/>
+            android:id="@+id/post_info_img"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true" />
 
-        <TextView
-            android:id="@+id/postinfodialog_itemname"
+        <ImageButton
+            android:id="@+id/share_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|center"
-            android:textSize="20sp"/>
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/sharebtn"
+            android:src="@drawable/sharebtn"
+
+            />
+
+        <ImageButton
+            android:id="@+id/love_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/share_btn"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/lovebtn"
+            android:src="@drawable/lovebtn"
+
+            />
+
+        <ImageButton
+            android:id="@+id/exit_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/exitbtn"
+            android:src="@drawable/exitbtn" />
+
+        <Button
+            android:id="@+id/more_info_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/more_info_round_button"
+            android:text="more info"
+            android:textColor="@android:color/white"
+            android:textSize="12dp"
+
+            />
+
+        <EditText
+            android:id="@+id/chat_text_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="62dp"
+            android:layout_marginBottom="10dp"
+            android:layout_weight="0.8"
+            android:background="@drawable/massage_text_edit"
+            android:backgroundTint="#ffffff"
+            android:gravity="center"
+            android:hint="Write something"
+            android:textColor="@android:color/white"
+            android:textColorHint="#f67493"
+            android:textStyle="italic"
+            />
+
+        <Button
+            android:id="@+id/send_message_btn"
+            android:layout_width="50dp"
+            android:layout_height="30dp"
+            android:background="@drawable/send_massege_rounded_btn"
+            android:text="Send"
+            android:textColor="@android:color/white"
+            android:textSize="12dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="8dp"
+            android:layout_marginBottom="13dp"
+
+            />
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/interestedbtn"
+            android:background="@drawable/interestedbtn"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="21dp"
+            android:layout_marginBottom="15dp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Interested"
+            android:textSize="11dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="11dp"
+            android:textColor="@android:color/white"
+            />
+
+        <HorizontalScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="54dp"
+            android:layout_marginLeft="4dp"
+
+            >
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="#00000000"
+                >
+                <Button
+                    android:id="@+id/custom_answer1_btn"
+                    android:layout_width="200dp"
+                    android:layout_height="30dp"
+                    android:layout_margin="7dp"
+                    android:text="What condition is it in ?"
+                    android:textColor="@android:color/white"
+                    android:background="@drawable/custom_answer_btn"
+                    />
+                <Button
+                    android:id="@+id/custom_answer2_btn"
+                    android:layout_width="200dp"
+                    android:layout_height="30dp"
+                    android:layout_margin="7dp"
+                    android:text="Is the price negotiable ?"
+                    android:textColor="@android:color/white"
+                    android:background="@drawable/custom_answer_btn"
+                    />
+                <Button
+                    android:id="@+id/custom_answer3_btn"
+                    android:layout_width="200dp"
+                    android:layout_height="30dp"
+                    android:layout_margin="7dp"
+                    android:text="Is it still available ?"
+                    android:textColor="@android:color/white"
+                    android:background="@drawable/custom_answer_btn"
+                    />
+            </LinearLayout>
+        </HorizontalScrollView>
+
+        <TextView
+            android:id="@+id/post_info_content_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:textColor="@android:color/white"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginBottom="130dp"
+            android:layout_marginLeft="6dp"
+            />
+        <TextView
+            android:id="@+id/cash_amount_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="6dp"
+            android:layout_marginBottom="110dp"
+            />
+        <TextView
+            android:id="@+id/currency_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="60dp"
+            android:layout_marginBottom="110dp"
+            />
 
 
 
 
-
-
-
-
-
-
-    </LinearLayout>
+    </RelativeLayout>
 
 </FrameLayout>
+

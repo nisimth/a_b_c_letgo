@@ -19,7 +19,7 @@
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
              android:layout_margin="5dp"
-             android:background="#e2e2e2">
+             android:background="#fff3e6">
 
           <LinearLayout
               android:layout_width="wrap_content"
@@ -30,90 +30,197 @@
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
                android:src="@drawable/car"
-               android:background="#e2e2e2"
+               android:background="#00000000"
                android:layout_margin="5dp"
                />
              <TextView
                  android:layout_width="wrap_content"
                  android:layout_height="wrap_content"
-                 android:text=" cars"
-                 android:textSize="20dp"
-                 android:layout_gravity="center"/>
+                 android:text=" Cars"
+                 android:textSize="10dp"
+                 android:layout_gravity="center"
+                 android:layout_marginTop="-8dp"/>
           </LinearLayout>
 
-           <ImageButton
-               android:id="@+id/tech_tag_btn"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:src="@drawable/tech"
-               android:background="#e2e2e2"
-               android:layout_margin="5dp"
-               />
+          <LinearLayout
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:orientation="vertical">
 
+              <ImageButton
+                  android:id="@+id/tech_tag_btn"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:src="@drawable/tech"
+                  android:background="#00000000"
+                  android:layout_margin="5dp"
+                  />
+              <TextView
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text=" Tech"
+                  android:textSize="10dp"
+                  android:layout_gravity="center"
+                  android:layout_marginTop="-8dp"
+                  />
+          </LinearLayout>
 
-             <ImageButton
-               android:id="@+id/home_tag_btn"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:src="@drawable/homec"
-               android:background="#e2e2e2"
-               android:layout_margin="5dp"
-               />
-
-           <ImageButton
-               android:id="@+id/leisure_tag_btn"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:src="@drawable/leisure"
-               android:background="#e2e2e2"
-               android:layout_margin="5dp"
-               />
-
-             <ImageButton
-                 android:id="@+id/motors_tag_btn"
+             <LinearLayout
                  android:layout_width="wrap_content"
                  android:layout_height="wrap_content"
-                 android:src="@drawable/motors"
-                 android:layout_margin="5dp"
-                 android:background="#e2e2e2"
-                  />
+                 android:orientation="vertical"
+                 >
+                 <ImageButton
+                     android:id="@+id/home_tag_btn"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:src="@drawable/homec"
+                     android:background="#00000000"
+                     android:layout_margin="5dp"
+                     />
+                 <TextView
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:text=" Home"
+                     android:textSize="10dp"
+                     android:layout_gravity="center"
+                     android:layout_marginTop="-8dp"
+                     />
+             </LinearLayout>
 
-
-             <ImageButton
-               android:id="@+id/fation_tag_btn"
+           <LinearLayout
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
-               android:src="@drawable/fashion"
-               android:background="#e2e2e2"
-               android:layout_margin="5dp"
-               />
+               android:orientation="vertical">
+               <ImageButton
+                   android:id="@+id/leisure_tag_btn"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:src="@drawable/leisure"
+                   android:background="#00000000"
+                   android:layout_margin="5dp"
+                   />
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text=" Leisure"
+                   android:textSize="10dp"
+                   android:layout_gravity="center"
+                   android:layout_marginTop="-8dp"
+                   />
 
-           <ImageButton
-               android:id="@+id/child_tag_btn"
+           </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <ImageButton
+                    android:id="@+id/motors_tag_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/motors"
+                    android:layout_margin="5dp"
+                    android:background="#00000000"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" Motors"
+                    android:textSize="10dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="-8dp"
+                    />
+            </LinearLayout>
+
+
+             <LinearLayout
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:orientation="vertical">
+                 <ImageButton
+                     android:id="@+id/fation_tag_btn"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:src="@drawable/fashion"
+                     android:background="#00000000"
+                     android:layout_margin="5dp"
+                     />
+                 <TextView
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:text=" Fashion"
+                     android:textSize="10dp"
+                     android:layout_gravity="center"
+                     android:layout_marginTop="-8dp"
+                     />
+             </LinearLayout>
+
+           <LinearLayout
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
-               android:src="@drawable/child"
-               android:background="#e2e2e2"
-               android:layout_margin="5dp"
-               />
+               android:orientation="vertical">
+               <ImageButton
+                   android:id="@+id/child_tag_btn"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:src="@drawable/child"
+                   android:background="#00000000"
+                   android:layout_margin="5dp"
+                   />
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text=" Child"
+                   android:textSize="10dp"
+                   android:layout_gravity="center"
+                   android:layout_marginTop="-8dp"
+                   />
+           </LinearLayout>
 
-           <ImageButton
-               android:id="@+id/entertaiment_tag_btn"
+           <LinearLayout
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
-               android:src="@drawable/enteratimaet"
-               android:background="#e2e2e2"
-               android:layout_margin="5dp"
-               />
+               android:orientation="vertical">
+               <ImageButton
+                   android:id="@+id/entertaiment_tag_btn"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:src="@drawable/enteratimaet"
+                   android:background="#00000000"
+                   android:layout_margin="5dp"
+                   />
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text=" Entertaiment"
+                   android:textSize="10dp"
+                   android:layout_gravity="center"
+                   android:layout_marginTop="-8dp"
+                   />
+           </LinearLayout>
 
-             <ImageButton
-               android:id="@+id/other_tag_btn"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:src="@drawable/other"
-               android:background="#e2e2e2"
-               android:layout_margin="5dp"
-               />
+             <LinearLayout
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:orientation="vertical">
+                 <ImageButton
+                     android:id="@+id/other_tag_btn"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:src="@drawable/other"
+                     android:background="#00000000"
+                     android:layout_margin="5dp"
+                     />
+                 <TextView
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:text=" Other"
+                     android:textSize="10dp"
+                     android:layout_gravity="center"
+                     android:layout_marginTop="-8dp"
+                     />
+             </LinearLayout>
 
          </LinearLayout>
        </HorizontalScrollView>
@@ -122,19 +229,22 @@
 
            android:id="@+id/home_recycler_view"
            android:layout_width="match_parent"
-           android:layout_height="wrap_content">
+           android:layout_height="wrap_content"
+           >
 
        </android.support.v7.widget.RecyclerView>
        
     </LinearLayout>
-    <ImageButton
+    <Button
         android:id="@+id/add_new_post_btn"
-        android:layout_width="wrap_content"
+        android:layout_width="170dp"
         android:layout_height="wrap_content"
-        android:src="@drawable/addbtn"
-        android:layout_gravity="bottom|left"
-        android:background="@drawable/addbtn"
+        android:layout_gravity="bottom|center"
+        android:background="@drawable/add_new_post_btn"
+        android:text="Sell your stuff"
+        android:textColor="@android:color/white"
+        android:drawableLeft="@android:drawable/ic_menu_camera"
         android:layout_marginBottom="20dp"
-        android:layout_marginLeft="20dp"
+
         />
 </FrameLayout>

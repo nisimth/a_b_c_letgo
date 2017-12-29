@@ -13,6 +13,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
 
 
@@ -86,7 +87,7 @@ public class HomeFragment extends Fragment implements CallBackListiner{
         View rootView = inflater.inflate(R.layout.fragment_home,container,false);
         homeRecyclerView = (RecyclerView) rootView.findViewById(R.id.home_recycler_view);
         //postsListView = (GridView) rootView.findViewById(R.id.posts_list_view);
-        ImageButton addNewPostBtn= (ImageButton) rootView.findViewById(R.id.add_new_post_btn);
+        Button addNewPostBtn = (Button) rootView.findViewById(R.id.add_new_post_btn);
 
         addNewPostBtn.setOnClickListener(new View.OnClickListener(){
             //open camera to shoot a picture and to add it to the data base

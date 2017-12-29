@@ -12,15 +12,19 @@ import java.io.ByteArrayOutputStream;
 public class PostInfo {
 
     private String id;
-    private String title;
-    private String content;
+    private String title; // title of post
+    private String content; // description of post
+    private String itemPrice ; // new attribute of price for item
+    private String itemPriceCurrency ;  //currency
     private String tag; // category
     private Bitmap img;
 
-    public PostInfo(String title,String content,String tag, Bitmap img) {
+    public PostInfo( String title , String content , String itemPrice , String itemPriceCurrency , String tag , Bitmap img ) {
         this.id = generateId();
         this.title = title;
         this.content = content;
+        this.itemPrice = itemPrice ;
+        this.itemPriceCurrency = itemPriceCurrency ;
         this.tag = tag;
         this.img = img;
 
@@ -58,6 +62,22 @@ public class PostInfo {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public String getItemPrice() {
+        return itemPrice;
+    }
+
+    public void setItemPrice(String itemPrice) {
+        this.itemPrice = itemPrice;
+    }
+
+    public String getItemPriceCurrency() {
+        return itemPriceCurrency;
+    }
+
+    public void setItemPriceCurrency(String itemPriceCurrency) {
+        this.itemPriceCurrency = itemPriceCurrency;
     }
 
     public String getTag() {

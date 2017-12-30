@@ -100,6 +100,7 @@
 
             />
         <ImageButton
+            android:id="@+id/interested_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/interestedbtn"
@@ -124,9 +125,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
             android:layout_marginBottom="54dp"
             android:layout_marginLeft="4dp"
-
+            android:layoutDirection="ltr"
             >
 
             <LinearLayout
@@ -200,6 +202,19 @@
             android:layout_alignParentLeft="true"
             android:layout_marginLeft="60dp"
             android:layout_marginBottom="110dp"
+            />
+        <TextView
+            android:id="@+id/tag_item_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cars"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="120dp"
+            android:layout_marginRight="8dp"
             />
 
 

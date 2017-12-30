@@ -26,6 +26,8 @@ public class PostInfoFragmentDialog extends DialogFragment {
     private TextView cashAmount ;
     private TextView currency ;
     private TextView description ;
+    private TextView tagPost ;
+    private ImageButton exitImageBtn;
 
 
 
@@ -42,28 +44,29 @@ public class PostInfoFragmentDialog extends DialogFragment {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_post_info_fragment_dialog, container, false);
 
-        //nameTxt = (TextView) rootView.findViewById(R.id.postinfodialog_itemname);
         img = (ImageView) rootView.findViewById(R.id.post_info_img);
         cashAmount = (TextView) rootView.findViewById(R.id.cash_amount_text_view);
         currency = (TextView) rootView.findViewById(R.id.currency_text_view);
         description = (TextView) rootView.findViewById(R.id.post_info_content_text_view);
-        //exit = (ImageButton) rootView.findViewById(R.id.postinfodialog_exit_btn);
+        tagPost = (TextView) rootView.findViewById(R.id.tag_item_text_view);
+        exitImageBtn = (ImageButton) rootView.findViewById(R.id.exit_btn);
         //like = (ImageButton) rootView.findViewById(R.id.postinfodialog_addtofavorites_btn);
 
-        //exit.setOnClickListener(exitOnClickListener);
+        exitImageBtn.setOnClickListener(exitOnClickListener);
 
         // recieve data
-        //String name = this.getArguments().getString("NAME_KEY");
         String amount = this.getArguments().getString("AMOUNT_KEY");
         String currency1 = this.getArguments().getString("CURRENCY_KEY");
         String desc = this.getArguments().getString("DESC_KEY");
+        String tag = this.getArguments().getString("TAG_KEY");
         byte[] image = this.getArguments().getByteArray("IMAGE_KEY");
 
         // bind data
-        //nameTxt.setText(name);
+
         cashAmount.setText(amount);
         currency.setText(currency1);
         description.setText(desc);
+        tagPost.setText(tag);
         img.setImageBitmap(BitmapFactory.decodeByteArray(image,0,image.length));
 
 

@@ -114,6 +114,7 @@ public class HomeRecyclerViewAdapter extends RecyclerView.Adapter<HomeRecyclerVi
         b.putString("AMOUNT_KEY",data.getItemPrice());
         b.putString("CURRENCY_KEY",data.getItemPriceCurrency());
         b.putString("DESC_KEY",data.getContent());
+        b.putString("TAG_KEY",data.getTag());
         b.putByteArray("IMAGE_KEY",data.getImgByteArray());
 
 

@@ -6,13 +6,113 @@
     android:orientation="vertical"
     tools:context="course.android.letgo_302838271_305212946.fragments.MyProfileFragment">
 
-    <LinearLayout
+    <RelativeLayout
+        android:id="@+id/all_zone"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:background="@color/colorAccent"
-        >
+        android:layout_height="150dp"
+        android:background="#ff4d4d">
 
-    </LinearLayout>
+        <ImageButton
+            android:id="@+id/setting_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:background="#00000000"
+            android:src="@drawable/smallsettingbtn" />
+
+        <ImageButton
+            android:id="@+id/exist_setting_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="45dp"
+            android:layout_marginTop="10dp"
+            android:background="#00000000"
+            android:src="@drawable/outbtn" />
+
+        <TextView
+            android:id="@+id/user_name_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="7dp"
+            android:text="User Admin"
+            android:textColor="@android:color/white"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/user_name_text_view"
+            android:layout_centerHorizontal="true"
+            android:text="עמק יזראעל, מחוז צפון"
+            android:textColor="@android:color/white"
+            android:textDirection="rtl"
+
+            />
+
+
+        <RelativeLayout
+            android:id="@+id/white_zone"
+            android:layout_width="match_parent"
+            android:layout_height="75dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:background="#ffffff">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="40dp"
+                android:text="VERIFIED WITH :"
+                android:textColor="@android:color/black" />
+
+            <ImageView
+                android:id="@+id/connection_type_image_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="80dp"
+                android:src="@drawable/facebookicon" />
+
+            <Button
+                android:id="@+id/build_trust_btn"
+                android:layout_width="110dp"
+                android:layout_height="25dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="40dp"
+                android:background="@drawable/rounded_build_trust_btn"
+                android:drawableLeft="@drawable/acceptlogoforbuildtrust"
+                android:text="Build Trust"
+                android:textColor="#ff0000"
+
+                />
+
+        </RelativeLayout>
+
+        <ImageButton
+            android:id="@+id/user_img_image_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="#00000000"
+            android:src="@drawable/profilefacebtn" />
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="70dp"
+            android:layout_below="@+id/user_img_image_btn"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/vertical_line" />
+    </RelativeLayout>
 
 
     <LinearLayout
@@ -46,15 +146,25 @@
 
 
     </LinearLayout>
-    
+
     <FrameLayout
         android:id="@+id/content_view"
         android:layout_width="match_parent"
-        android:layout_weight="2"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_weight="2">
+
+        <Button
+            android:id="@+id/add_new_post_btn"
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/add_new_post_btn"
+            android:drawableLeft="@android:drawable/ic_menu_camera"
+            android:text="Sell your stuff"
+            android:textColor="@android:color/white" />
 
     </FrameLayout>
-
 
 
 </LinearLayout>

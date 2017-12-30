@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.graphics.Bitmap;
+import android.widget.ImageButton;
 
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
@@ -135,7 +136,7 @@ public class PostsDataBase extends SQLiteOpenHelper  {
         List<PostInfo> result = new ArrayList<PostInfo>();
         Cursor cursor=null;
         try {
-            cursor = db.query( POSTS_TABLE, POSTS_COLUMNS, null , null, null , null , null , null  );
+            cursor = db.query( POSTS_TABLE, POSTS_COLUMNS, null , null, null , null , null , null );
             if (cursor != null && cursor.getCount() > 0) {
                 cursor.moveToFirst();
                 while (!cursor.isAfterLast()) {
@@ -163,11 +164,12 @@ public class PostsDataBase extends SQLiteOpenHelper  {
         return result;
     }
 
-   /* public List<PostInfo> getPostsByTag( ImageButton tag ){
+ /*   public List<PostInfo> getPostsByTag (ImageButton tag){
         List<PostInfo> result = new ArrayList<PostInfo>();
         Cursor cursor=null;
+        String [] selection = { tag.toString() };
         try {
-            cursor = db.query(POSTS_TABLE, POSTS_COLUMNS, null, null, null, tag.toString(), null);
+            cursor = db.query(POSTS_TABLE, POSTS_COLUMNS, null, selection , null, null,null);
             if (cursor != null && cursor.getCount() > 0) {
                 cursor.moveToFirst();
                 while (!cursor.isAfterLast()) {
@@ -175,9 +177,10 @@ public class PostsDataBase extends SQLiteOpenHelper  {
                     post.setId(cursor.getString(0));
                     post.setTitle(cursor.getString(1));
                     post.setContent(cursor.getString(2));
-                    post.setTag(cursor.getString(3));
-                    post.setImgFromByteArray(cursor.getBlob(4));
-                    // img //
+                    post.setItemPrice(cursor.getString(3));
+                    post.setItemPriceCurrency(cursor.getString(4));
+                    post.setTag(cursor.getString(5));
+                    post.setImgFromByteArray(cursor.getBlob(6));
                     result.add(post);
                     cursor.moveToNext();
                 }

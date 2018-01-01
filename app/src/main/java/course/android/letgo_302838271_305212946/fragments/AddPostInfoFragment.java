@@ -1,7 +1,6 @@
 package course.android.letgo_302838271_305212946.fragments;
 
 
-import android.app.Activity;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.Context;
@@ -18,7 +17,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
-import android.widget.SpinnerAdapter;
 
 import course.android.letgo_302838271_305212946.R;
 import course.android.letgo_302838271_305212946.core.PostInfo;
@@ -47,8 +45,9 @@ public class AddPostInfoFragment extends DialogFragment {
     private Intent intent;
     private Context context;
     private Bitmap tempimage;
+    
+    private Button cancelOperation ;
 
-    private Button benny ;
 
     public AddPostInfoFragment() {
         // Required empty public constructor
@@ -86,15 +85,19 @@ public class AddPostInfoFragment extends DialogFragment {
         saveBtn.setOnClickListener(savePostListener);
         takePhoto.setOnClickListener(takePhotoListiner);
 
-        benny = (Button)rootview.findViewById(R.id.bennyBtn);
-        benny.setOnClickListener(new View.OnClickListener(){
+       
+
+
+        cancelOperation = (Button)rootview.findViewById(R.id.cancelOperationBtn);
+        cancelOperation.setOnClickListener(new View.OnClickListener(){
             //open dialog fragment
             @Override
             public void onClick(View v) {
-                CameraOrGalleryDialogFragment fragment = new CameraOrGalleryDialogFragment();
+               /* CameraOrGalleryDialogFragment fragment = new CameraOrGalleryDialogFragment();
                 fragment.setTargetFragment(AddPostInfoFragment.this,0);
                 Activity act = (Activity) context;
-                fragment.show(act.getFragmentManager(), " edtpostinfodialog");
+                fragment.show(act.getFragmentManager(), " edtpostinfodialog");*/
+               dismiss();
             }
         });
 

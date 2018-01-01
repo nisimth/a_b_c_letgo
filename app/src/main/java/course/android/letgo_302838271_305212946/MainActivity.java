@@ -8,8 +8,10 @@ import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
 
 import course.android.letgo_302838271_305212946.database.MyInfoManager;
+import course.android.letgo_302838271_305212946.fragments.AddPostInfoFragment;
 import course.android.letgo_302838271_305212946.fragments.ChatsFragment;
 import course.android.letgo_302838271_305212946.fragments.HomeFragment;
 import course.android.letgo_302838271_305212946.fragments.MyProfileFragment;
@@ -18,7 +20,7 @@ import course.android.letgo_302838271_305212946.fragments.MyProfileFragment;
 public class MainActivity extends Activity {
 
 
-
+    private Context context ;
     private FragmentManager fm;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +35,7 @@ public class MainActivity extends Activity {
         ft.replace(R.id.root_view, home );
         ft.addToBackStack(null);
         ft.commit();
+
 
 
     }
@@ -68,6 +71,7 @@ public class MainActivity extends Activity {
         ft.addToBackStack(null);
         ft.commit();
     }
+
 
     /*private void hideKeyboard() {
         try {

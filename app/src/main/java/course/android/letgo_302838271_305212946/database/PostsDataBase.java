@@ -164,12 +164,17 @@ public class PostsDataBase extends SQLiteOpenHelper  {
         return result;
     }
 
- /*   public List<PostInfo> getPostsByTag (ImageButton tag){
+    public List<PostInfo> getPostsByTag (String tagFromUser){
         List<PostInfo> result = new ArrayList<PostInfo>();
         Cursor cursor=null;
-        String [] selection = { tag.toString() };
+        String [] tag = {tagFromUser};
         try {
-            cursor = db.query(POSTS_TABLE, POSTS_COLUMNS, null, selection , null, null,null);
+         //   cursor = db.query(POSTS_TABLE, POSTS_COLUMNS, POST_TAG , tag , null, null,null);
+
+            String query = "Select * FROM " + POSTS_TABLE + " WHERE " + POST_TAG + " =  \"" + tagFromUser + "\"";
+            SQLiteDatabase db = this.getWritableDatabase();
+
+            cursor = db.rawQuery(query, null);
             if (cursor != null && cursor.getCount() > 0) {
                 cursor.moveToFirst();
                 while (!cursor.isAfterLast()) {
@@ -195,7 +200,7 @@ public class PostsDataBase extends SQLiteOpenHelper  {
             }
         }
         return result;
-    }*/
+    }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {

@@ -52,9 +52,9 @@ public class MyInfoManager {
         return postsDataBase.getAllPosts();
     }
     //////////////////////////////////////////
-  /*  public List<PostInfo> getPostsByTag(String tag){
-        return postsDataBase.getAllPosts();
-    }*/
+    public List<PostInfo> getPostsByTag(String tag){
+        return postsDataBase.getPostsByTag(tag);
+    }
     //////////////////////////////////////////
     public PostInfo getEditPost() {
         return editPost;

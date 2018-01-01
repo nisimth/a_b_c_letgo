@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 
 import java.util.List;
@@ -73,21 +74,102 @@ public class HomeFragment extends Fragment implements CallBackListiner{
                 initData();
             }
         });
-//////////////////////////////////////////////////////////////////////////
-      /*  carsBtn = (ImageButton) rootView.findViewById(R.id.car_tag_btn);
+//////////////////////////cars Btn////////////////////////////////////////
+        carsBtn = (ImageButton) rootView.findViewById(R.id.car_tag_btn);
         carsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                initDataByTag();
+                initDataByTag("Cars");
+
             }
-        });*/
-///////////////////////////////////////////////////////////////////////////
+        });
+
+        //////////////////////////tech Btn////////////////////////////////////////
+        techBtn = (ImageButton) rootView.findViewById(R.id.tech_tag_btn);
+        techBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                initDataByTag("Tech");
+
+            }
+        });
+
+        //////////////////////////home Btn////////////////////////////////////////
+        homeBtn = (ImageButton) rootView.findViewById(R.id.home_tag_btn);
+        homeBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                initDataByTag("Home");
+
+            }
+        });
+
+        //////////////////////////leisure Btn////////////////////////////////////////
+        leisureBtn = (ImageButton) rootView.findViewById(R.id.leisure_tag_btn);
+        leisureBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                initDataByTag("Leisure");
+
+            }
+        });
+
+        //////////////////////////motors Btn////////////////////////////////////////
+        motorsBtn = (ImageButton) rootView.findViewById(R.id.motors_tag_btn);
+        motorsBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                initDataByTag("Motors");
+
+            }
+        });
+
+        //////////////////////////child Btn////////////////////////////////////////
+        childBtn = (ImageButton) rootView.findViewById(R.id.child_tag_btn);
+        childBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                initDataByTag("Child");
+
+            }
+        });
+
+        //////////////////////////fashion Btn////////////////////////////////////////
+        fashionBtn = (ImageButton) rootView.findViewById(R.id.fation_tag_btn);
+        fashionBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                initDataByTag("Fashion");
+
+            }
+        });
+
+        //////////////////////////Entertainment Btn////////////////////////////////////////
+        entertaimentBtn = (ImageButton) rootView.findViewById(R.id.entertainment_tag_btn);
+        entertaimentBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                initDataByTag("Entertainment");
+
+            }
+        });
+
+        //////////////////////////other Btn////////////////////////////////////////
+        otherBtn = (ImageButton) rootView.findViewById(R.id.other_tag_btn);
+        otherBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                initDataByTag("Other");
+
+            }
+        });
+
         initData();
         return rootView;
     }
 /////////////////////////////////////////////////////////////////////////////////////
- /*   private void initDataByTag(){
-        List<PostInfo> posts = MyInfoManager.getInstance().getPostsByTag( carsBtn.toString() );
+   private void initDataByTag(String tag){
+        List<PostInfo> posts = MyInfoManager.getInstance().getPostsByTag(tag);
         if( posts != null && posts.size() > 0 ){
             HomeRecyclerViewAdapter adapter = new HomeRecyclerViewAdapter(posts,this);
             LinearLayoutManager ll = new LinearLayoutManager(context);
@@ -98,7 +180,7 @@ public class HomeFragment extends Fragment implements CallBackListiner{
             homeRecyclerView.setLayoutManager(gl);
             homeRecyclerView.setAdapter(adapter);
         }
-    }*/
+    }
  ////////////////////////////////////////////////////////////////////////////////////////
 
     private void initData() {

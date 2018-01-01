@@ -4,6 +4,7 @@
     android:layout_height="match_parent"
     tools:context="course.android.letgo_302838271_305212946.fragments.AddPostInfoFragment">
 
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -89,11 +90,11 @@
             />
 
         <Button
-            android:id="@+id/bennyBtn"
+            android:id="@+id/cancelOperationBtn"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="center"
-            android:text="CHOOSE"
+            android:text="CANCEL"
             />
 
 

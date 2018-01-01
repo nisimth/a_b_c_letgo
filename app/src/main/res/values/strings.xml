@@ -15,6 +15,7 @@
     <string name="save_btn_txt">Save</string>
     <string name="take_photo_btn_txt">take photo</string>
 
+
     <string-array name="tags">
         <item>Cars</item>
         <item>Tech</item>

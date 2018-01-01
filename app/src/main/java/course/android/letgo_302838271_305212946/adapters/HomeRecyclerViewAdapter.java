@@ -72,22 +72,6 @@ public class HomeRecyclerViewAdapter extends RecyclerView.Adapter<HomeRecyclerVi
             //tag = (TextView)itemView.findViewById(R.id.post_tag_txtview);
             image = (ImageView)itemView.findViewById(R.id.post_img_imgView);
             itemView.setOnClickListener(this);
-
-
-
-          /* ImageButton addpostBtn = (ImageButton)itemView.findViewById(R.id.add_new_post_btn);
-
-            addpostBtn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    AddPostInfoFragment editPostInfoFragment = new AddPostInfoFragment();
-                    editPostInfoFragment.setTargetFragment(hostedFragment,1);
-                    MyInfoManager.getInstance().setEditPost(data);
-                    Activity act = (Activity) context ;
-                    editPostInfoFragment.show(act.getFragmentManager(), "AddPostInfoFragment" );
-                }
-            });*/
-
         }
 
         public void setData(PostInfo data){

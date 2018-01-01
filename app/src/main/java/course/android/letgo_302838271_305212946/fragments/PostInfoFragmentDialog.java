@@ -54,6 +54,7 @@ public class PostInfoFragmentDialog extends DialogFragment {
 
         exitImageBtn.setOnClickListener(exitOnClickListener);
 
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
         // recieve data
         String amount = this.getArguments().getString("AMOUNT_KEY");
         String currency1 = this.getArguments().getString("CURRENCY_KEY");
@@ -69,6 +70,7 @@ public class PostInfoFragmentDialog extends DialogFragment {
         tagPost.setText(tag);
         img.setImageBitmap(BitmapFactory.decodeByteArray(image,0,image.length));
 
+        /////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 

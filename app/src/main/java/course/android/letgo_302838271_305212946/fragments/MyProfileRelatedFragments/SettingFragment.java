@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import course.android.letgo_302838271_305212946.R;
 
@@ -16,7 +17,7 @@ import course.android.letgo_302838271_305212946.R;
  */
 public class SettingFragment extends Fragment {
     private Context context ;
-
+    private ImageButton a ; ///
 
     public SettingFragment() {
         // Required empty public constructor

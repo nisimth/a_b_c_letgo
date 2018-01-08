@@ -86,10 +86,10 @@ public class MyProfileFragment extends Fragment implements CallBackListiner {
     private View.OnClickListener selectItemListener = new View.OnClickListener(){
         @Override
         public void onClick(View v) {
-            AddPostInfoFragment fragment = new AddPostInfoFragment();
+            AddNewPostDialogFragment fragment = new AddNewPostDialogFragment();
             fragment.setTargetFragment(MyProfileFragment.this,0);
             Activity act = (Activity) context;
-            fragment.show(act.getFragmentManager(), " edtpostinfodialog");
+            fragment.show(act.getFragmentManager(), " addNewPostDialogFragment");
         }
     };
 
@@ -118,10 +118,10 @@ public class MyProfileFragment extends Fragment implements CallBackListiner {
             //open camera to shoot a picture and to add it to the data base
             @Override
             public void onClick(View v) {
-                AddPostInfoFragment fragment = new AddPostInfoFragment();
+                AddNewPostDialogFragment fragment = new AddNewPostDialogFragment();
                 fragment.setTargetFragment(MyProfileFragment.this,0);
                 Activity act = (Activity) context;
-                fragment.show(act.getFragmentManager(), " edtpostinfodialog");
+                fragment.show(act.getFragmentManager(), " addNewPostDialogFragment");
 
             }
         });
@@ -133,6 +133,8 @@ public class MyProfileFragment extends Fragment implements CallBackListiner {
         t.commit();
         return rootView;
     }
+
+
 
     @Override
     public void saveButtonOnClicked() {

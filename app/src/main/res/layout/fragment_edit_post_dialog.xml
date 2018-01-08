@@ -2,8 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="course.android.letgo_302838271_305212946.fragments.AddNewPostDialogFragment">
-
+    tools:context="course.android.letgo_302838271_305212946.fragments.MyProfileRelatedFragments.EditPostDialogFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -107,4 +106,5 @@
         android:text="@string/save_btn_txt"
         android:layout_gravity="bottom"
         />
+
 </FrameLayout>

@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="course.android.letgo_302838271_305212946.fragments.PostInfoFragmentDialog">
+    tools:context="course.android.letgo_302838271_305212946.fragments.PostInfoDialogFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <RelativeLayout
@@ -216,6 +216,8 @@
             android:layout_marginBottom="120dp"
             android:layout_marginRight="8dp"
             />
+
+
 
 
 

@@ -44,18 +44,26 @@ public class MyInfoManager {
         return postsDataBase.addNewPostInfo(postInfo);
     }
 
-    public boolean deletePost(PostInfo postInfo){
+    /*public boolean deletePost(PostInfo postInfo){
         return  postsDataBase.deletPost(postInfo);
+    }*/
+
+    public Integer deletePostFromDB(PostInfo post){
+        return postsDataBase.deletePost(post);
     }
 
     public List<PostInfo> getAllPosts(){
         return postsDataBase.getAllPosts();
     }
-    //////////////////////////////////////////
+
     public List<PostInfo> getPostsByTag(String tag){
         return postsDataBase.getPostsByTag(tag);
     }
-    //////////////////////////////////////////
+
+   /* public List<PostInfo> getAllFavoritePosts(String like){
+        return postsDataBase.getAllFavoritePosts(like);
+    }*/
+
     public PostInfo getEditPost() {
         return editPost;
     }

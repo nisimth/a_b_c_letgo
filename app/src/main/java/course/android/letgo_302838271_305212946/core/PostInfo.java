@@ -19,7 +19,11 @@ public class PostInfo {
     private String tag; // category
     private Bitmap img;
 
-    public PostInfo( String title , String content , String itemPrice , String itemPriceCurrency , String tag , Bitmap img ) {
+   // private String likeOrNot  ;
+
+
+
+    public PostInfo(String title , String content , String itemPrice , String itemPriceCurrency , String tag , Bitmap img ) {
         this.id = generateId();
         this.title = title;
         this.content = content;
@@ -27,6 +31,7 @@ public class PostInfo {
         this.itemPriceCurrency = itemPriceCurrency ;
         this.tag = tag;
         this.img = img;
+      //  this.likeOrNot = likeOrNot ;
 
 
     }
@@ -95,6 +100,14 @@ public class PostInfo {
     public void setImg(Bitmap img) {
         this.img = img;
     }
+
+ /*   public String getLikeOrNot() {
+        return likeOrNot;
+    }
+
+    public void setLikeOrNot(String likeOrNot) {
+        this.likeOrNot = likeOrNot;
+    }*/
 
     public byte[] getImgByteArray(){
         byte[] res = new byte[0];

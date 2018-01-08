@@ -7,12 +7,8 @@ import android.app.FragmentTransaction;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.Button;
 
 import course.android.letgo_302838271_305212946.database.MyInfoManager;
-import course.android.letgo_302838271_305212946.fragments.AddPostInfoFragment;
-import course.android.letgo_302838271_305212946.fragments.ChatsFragment;
 import course.android.letgo_302838271_305212946.fragments.HomeFragment;
 import course.android.letgo_302838271_305212946.fragments.MyProfileFragment;
 

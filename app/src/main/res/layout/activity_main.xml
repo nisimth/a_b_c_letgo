@@ -23,7 +23,9 @@
         android:layout_height="wrap_content"
         android:background="#fff3e6"
         android:gravity="bottom|center"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layoutDirection="ltr"
+        >
 
 
         <ImageButton

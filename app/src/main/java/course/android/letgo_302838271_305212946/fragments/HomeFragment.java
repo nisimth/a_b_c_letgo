@@ -15,7 +15,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.Toast;
 
 
 import java.util.List;
@@ -38,6 +37,7 @@ public class HomeFragment extends Fragment implements CallBackListiner{
 
     private ImageButton carsBtn , techBtn , homeBtn , leisureBtn ,
             motorsBtn , fashionBtn , childBtn , entertaimentBtn , otherBtn ;
+    private ImageButton loveBtn ;
 
     public HomeFragment() {
 
@@ -47,10 +47,10 @@ public class HomeFragment extends Fragment implements CallBackListiner{
     private View.OnClickListener selectItemListener = new View.OnClickListener(){
         @Override
         public void onClick(View v) {
-            AddPostInfoFragment fragment = new AddPostInfoFragment();
+            AddNewPostDialogFragment fragment = new AddNewPostDialogFragment();
             fragment.setTargetFragment(HomeFragment.this,0);
             Activity act = (Activity) context;
-            fragment.show(act.getFragmentManager(), " edtpostinfodialog");
+            fragment.show(act.getFragmentManager(), " addNewPostDialogFragment");
         }
     };
 
@@ -64,13 +64,13 @@ public class HomeFragment extends Fragment implements CallBackListiner{
 
         Button addNewPostBtn = (Button) rootView.findViewById(R.id.add_new_post_btn);
         addNewPostBtn.setOnClickListener(new View.OnClickListener(){
-            //open camera to shoot a picture and to add it to the data base
+            //open dialog fragment (AddNewPostDialogFragment)
             @Override
             public void onClick(View v) {
-                AddPostInfoFragment fragment = new AddPostInfoFragment();
+                AddNewPostDialogFragment fragment = new AddNewPostDialogFragment();
                 fragment.setTargetFragment(HomeFragment.this,0);
                 Activity act = (Activity) context;
-                fragment.show(act.getFragmentManager(), " edtpostinfodialog");
+                fragment.show(act.getFragmentManager(), "addNewPostDialogFragment");
                 initData();
             }
         });
@@ -164,9 +164,18 @@ public class HomeFragment extends Fragment implements CallBackListiner{
             }
         });
 
+       /* loveBtn = (ImageButton) rootView.findViewById(R.id.love_btn);
+        loveBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                initAllFavoritePost("true");
+            }
+        });*/
+
         initData();
         return rootView;
     }
+
 /////////////////////////////////////////////////////////////////////////////////////
    private void initDataByTag(String tag){
         List<PostInfo> posts = MyInfoManager.getInstance().getPostsByTag(tag);
@@ -196,10 +205,25 @@ public class HomeFragment extends Fragment implements CallBackListiner{
            homeRecyclerView.setAdapter(adapter);
        }
     }
+
+   /* private void initAllFavoritePost(String like){
+        List<PostInfo> posts = MyInfoManager.getInstance().getAllFavoritePosts(like);
+        if( posts != null && posts.size() > 0 ){
+            HomeRecyclerViewAdapter adapter = new HomeRecyclerViewAdapter(posts,this);
+            LinearLayoutManager ll = new LinearLayoutManager(context);
+            ll.setOrientation(LinearLayoutManager.VERTICAL);
+
+            GridLayoutManager gl = new GridLayoutManager(context,2);
+
+            homeRecyclerView.setLayoutManager(gl);
+            homeRecyclerView.setAdapter(adapter);
+        }
+    }*/
         @Override
         public void saveButtonOnClicked () {
             initData();
         }
+
     }
 
 //

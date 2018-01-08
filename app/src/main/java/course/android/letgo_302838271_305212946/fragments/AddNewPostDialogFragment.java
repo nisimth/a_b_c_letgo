@@ -1,6 +1,7 @@
 package course.android.letgo_302838271_305212946.fragments;
 
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.Context;
@@ -26,7 +27,7 @@ import course.android.letgo_302838271_305212946.interfaces.CallBackListiner;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class AddPostInfoFragment extends DialogFragment {
+public class AddNewPostDialogFragment extends DialogFragment {
     private static final int CONTENTT_REQUEST = 111;
 
 
@@ -44,12 +45,11 @@ public class AddPostInfoFragment extends DialogFragment {
     private int targetRequestCode;
     private Intent intent;
     private Context context;
-    private Bitmap tempimage;
-    
+    private Bitmap tempImage;
     private Button cancelOperation ;
 
 
-    public AddPostInfoFragment() {
+    public AddNewPostDialogFragment() {
         // Required empty public constructor
     }
 
@@ -93,8 +93,8 @@ public class AddPostInfoFragment extends DialogFragment {
             //open dialog fragment
             @Override
             public void onClick(View v) {
-               /* CameraOrGalleryDialogFragment fragment = new CameraOrGalleryDialogFragment();
-                fragment.setTargetFragment(AddPostInfoFragment.this,0);
+                /*CameraOrGalleryDialogFragment fragment = new CameraOrGalleryDialogFragment();
+                fragment.setTargetFragment(AddNewPostDialogFragment.this,0);
                 Activity act = (Activity) context;
                 fragment.show(act.getFragmentManager(), " edtpostinfodialog");*/
                dismiss();
@@ -113,7 +113,7 @@ public class AddPostInfoFragment extends DialogFragment {
             String postCurrency = currencySpinner.getSelectedItem().toString();
             String postTag = tagSpinner.getSelectedItem().toString();;
            // Bitmap photo = postPhoto.getDrawingCache();
-            Bitmap photo = tempimage;
+            Bitmap photo = tempImage;
 
 
             if(targetRequestCode == 0) {
@@ -161,7 +161,7 @@ public class AddPostInfoFragment extends DialogFragment {
 
             Bitmap bmp = (Bitmap) extras.get("data");
             postPhoto.setImageBitmap(bmp);
-            tempimage = bmp;
+            tempImage = bmp;
         }
     }
 

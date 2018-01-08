@@ -17,35 +17,36 @@ import java.util.List;
 import course.android.letgo_302838271_305212946.R;
 import course.android.letgo_302838271_305212946.core.PostInfo;
 import course.android.letgo_302838271_305212946.database.MyInfoManager;
+import course.android.letgo_302838271_305212946.fragments.MyProfileRelatedFragments.EditPostDialogFragment;
+import course.android.letgo_302838271_305212946.fragments.MyProfileRelatedFragments.MySellingFragment;
 import course.android.letgo_302838271_305212946.fragments.PostInfoDialogFragment;
 import course.android.letgo_302838271_305212946.interfaces.ItemClickListener;
 
 /**
- * Created by user on 24/12/2017.
+ * Created by user on 05/01/2018.
  */
 
-public class HomeRecyclerViewAdapter extends RecyclerView.Adapter<HomeRecyclerViewAdapter.ViewHolder> {
-
+public class MyPostRecyclerViewAdapter extends RecyclerView.Adapter<MyPostRecyclerViewAdapter.ViewHolder> {
     private List<PostInfo> posts ;
     private Fragment hostedFragment;
     private Context context ;
 
 
-    public HomeRecyclerViewAdapter(List<PostInfo> posts, Fragment hostedFragment) {
+    public MyPostRecyclerViewAdapter(List<PostInfo> posts, Fragment hostedFragment) {
         this.posts = posts;
         this.hostedFragment = hostedFragment;
     }
 
     @Override
-    public HomeRecyclerViewAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public MyPostRecyclerViewAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         context = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
-        View view = inflater.inflate(R.layout.home_recycler_item_layout,parent,false);
-        return new HomeRecyclerViewAdapter.ViewHolder(view);
+        View view = inflater.inflate(R.layout.mypost_recycler_item_layout,parent,false);
+        return new MyPostRecyclerViewAdapter.ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(HomeRecyclerViewAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(MyPostRecyclerViewAdapter.ViewHolder holder, int position) {
         final PostInfo post = posts.get(position);
         holder.setData(post);
         holder.setItemClickListener(new ItemClickListener() {
@@ -71,7 +72,7 @@ public class HomeRecyclerViewAdapter extends RecyclerView.Adapter<HomeRecyclerVi
         private PostInfo data ;
         private ItemClickListener itemClickListener;
         /////////////
-        private ImageButton favoritePostBtn ;
+        private ImageButton deletePostBtn;
         ////////////
 
         public ViewHolder(View itemView) {
@@ -80,15 +81,31 @@ public class HomeRecyclerViewAdapter extends RecyclerView.Adapter<HomeRecyclerVi
             //tag = (TextView)itemView.findViewById(R.id.post_tag_txtview);
             image = (ImageView)itemView.findViewById(R.id.post_img_imgView);
             itemView.setOnClickListener(this);
-
-            /*favoritePostBtn = (ImageButton) itemView.findViewById(R.id.interested_btn);
-            favoritePostBtn.setOnClickListener(new View.OnClickListener() {
+            deletePostBtn = (ImageButton) itemView.findViewById(R.id.delete_post_btn);
+            deletePostBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    data.setLikeOrNot("true");
-                    Toast.makeText(context,"you like this post",Toast.LENGTH_LONG).show();
+                    Integer deletedPosts = MyInfoManager.getInstance().deletePostFromDB(data);
+                    if ( deletedPosts != 0 ){
+                        Toast.makeText(context,"Post has deleted",Toast.LENGTH_LONG).show();
+                    }else {
+                        Toast.makeText(context,"Post has not deleted",Toast.LENGTH_LONG).show();
+                    }
                 }
-            });*/
+            });
+            ImageButton editPostBtn = (ImageButton) itemView.findViewById(R.id.edit_post_btn);
+            editPostBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    EditPostDialogFragment editPostFragment = new EditPostDialogFragment();
+                    editPostFragment.setTargetFragment(hostedFragment,1);
+                    MyInfoManager.getInstance().setEditPost(data);
+                    Activity act = (Activity) context;
+                    editPostFragment.show(act.getFragmentManager(), "editPostDialogFragment");
+                    //pullDataToEditPostDialogFragment(data);
+                }
+            });
+
         }
 
         public void setData(PostInfo data){
@@ -110,7 +127,7 @@ public class HomeRecyclerViewAdapter extends RecyclerView.Adapter<HomeRecyclerVi
 
     }
 
-    // open item in dialog fragment
+
     private void openDialogFragment(PostInfo data){
         // bundle data
         Bundle b = new Bundle();
@@ -125,10 +142,25 @@ public class HomeRecyclerViewAdapter extends RecyclerView.Adapter<HomeRecyclerVi
         fragment.setArguments(b);
 
         Activity act = (Activity)context;
-        fragment.show(act.getFragmentManager(),"addNewPostDialogFragment");
-
+        fragment.show(act.getFragmentManager(),"editPostDialogFragment");
     }
 
+    /*private void pullDataToEditPostDialogFragment(PostInfo data){
+            Bundle b = new Bundle();
+            b.putString("AMOUNT_KEY",data.getItemPrice());
+            b.putString("CURRENCY_KEY",data.getItemPriceCurrency());
+            b.putString("DESC_KEY",data.getContent());
+            b.putString("TAG_KEY",data.getTag());
+            b.putByteArray("IMAGE_KEY",data.getImgByteArray());
+
+
+            EditPostDialogFragment fragment = new EditPostDialogFragment();
+            fragment.setArguments(b);
+
+            Activity act = (Activity)context;
+            fragment.show(act.getFragmentManager(),"editPostDialogFragment");
+
+    }*/
 
 
 }

@@ -15,11 +15,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import course.android.letgo_302838271_305212946.R;
+import course.android.letgo_302838271_305212946.database.MyInfoManager;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class PostInfoFragmentDialog extends DialogFragment {
+public class PostInfoDialogFragment extends DialogFragment {
     private TextView nameTxt;
     private ImageView img;
     private Context context;
@@ -31,7 +32,8 @@ public class PostInfoFragmentDialog extends DialogFragment {
 
 
 
-    public PostInfoFragmentDialog() {
+
+    public PostInfoDialogFragment() {
         // Required empty public constructor
     }
 
@@ -77,6 +79,7 @@ public class PostInfoFragmentDialog extends DialogFragment {
 
         return rootView;
     }
+
 
 
     // exit from post info dialog

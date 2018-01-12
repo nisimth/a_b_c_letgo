@@ -11,6 +11,7 @@ import android.view.View;
 import course.android.letgo_302838271_305212946.database.MyInfoManager;
 import course.android.letgo_302838271_305212946.fragments.HomeFragment;
 import course.android.letgo_302838271_305212946.fragments.MyProfileFragment;
+import course.android.letgo_302838271_305212946.network.utils.NetworkConnector;
 
 
 public class MainActivity extends Activity {
@@ -24,6 +25,7 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
         MyInfoManager.getInstance().openDataBase(this);
+        NetworkConnector.getInstance().initialize(this);
 
         fm = getFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
@@ -48,7 +50,6 @@ public class MainActivity extends Activity {
     }
 
     public void homeOnClick(View view) {
-        FragmentManager fm = getFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
         HomeFragment home = new HomeFragment();
         ft.replace(R.id.root_view, home);
@@ -60,7 +61,6 @@ public class MainActivity extends Activity {
 
 
     public void proflieOnClick(View view) {
-        FragmentManager fm = getFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
         MyProfileFragment profileFragment = new MyProfileFragment();
         ft.replace(R.id.root_view,profileFragment);

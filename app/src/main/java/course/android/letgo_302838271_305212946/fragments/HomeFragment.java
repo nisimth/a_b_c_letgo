@@ -3,6 +3,7 @@ package course.android.letgo_302838271_305212946.fragments;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.app.Fragment;
 
@@ -15,7 +16,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ProgressBar;
 
+
+import org.json.JSONObject;
 
 import java.util.List;
 
@@ -25,15 +29,20 @@ import course.android.letgo_302838271_305212946.adapters.HomeRecyclerViewAdapter
 import course.android.letgo_302838271_305212946.core.PostInfo;
 import course.android.letgo_302838271_305212946.database.MyInfoManager;
 import course.android.letgo_302838271_305212946.interfaces.CallBackListiner;
+import course.android.letgo_302838271_305212946.network.utils.NetworkConnector;
+import course.android.letgo_302838271_305212946.network.utils.NetworkResListener;
+import course.android.letgo_302838271_305212946.network.utils.ResStatus;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class HomeFragment extends Fragment implements CallBackListiner{
+public class HomeFragment extends Fragment implements CallBackListiner, NetworkResListener{
 
     private RecyclerView homeRecyclerView;
     private Context context;
+    private ProgressBar progressBar;
+
 
     private ImageButton carsBtn , techBtn , homeBtn , leisureBtn ,
             motorsBtn , fashionBtn , childBtn , entertaimentBtn , otherBtn ;
@@ -62,6 +71,7 @@ public class HomeFragment extends Fragment implements CallBackListiner{
         View rootView = inflater.inflate(R.layout.fragment_home,container,false);
         homeRecyclerView = (RecyclerView) rootView.findViewById(R.id.home_recycler_view);
 
+        NetworkConnector.getInstance().updatePostsFeed(this);
         Button addNewPostBtn = (Button) rootView.findViewById(R.id.add_new_post_btn);
         addNewPostBtn.setOnClickListener(new View.OnClickListener(){
             //open dialog fragment (AddNewPostDialogFragment)
@@ -178,7 +188,7 @@ public class HomeFragment extends Fragment implements CallBackListiner{
 
 /////////////////////////////////////////////////////////////////////////////////////
    private void initDataByTag(String tag){
-        List<PostInfo> posts = MyInfoManager.getInstance().getPostsByTag(tag);
+       List<PostInfo> posts = MyInfoManager.getInstance().getPostsByTag(tag);
         if( posts != null && posts.size() > 0 ){
             HomeRecyclerViewAdapter adapter = new HomeRecyclerViewAdapter(posts,this);
             LinearLayoutManager ll = new LinearLayoutManager(context);
@@ -194,7 +204,7 @@ public class HomeFragment extends Fragment implements CallBackListiner{
 
     private void initData() {
         List<PostInfo> posts = MyInfoManager.getInstance().getAllPosts();
-       if( posts != null && posts.size() > 0 ){
+        if( posts != null && posts.size() > 0 ){
            HomeRecyclerViewAdapter adapter = new HomeRecyclerViewAdapter(posts,this);
            LinearLayoutManager ll = new LinearLayoutManager(context);
            ll.setOrientation(LinearLayoutManager.VERTICAL);
@@ -203,7 +213,7 @@ public class HomeFragment extends Fragment implements CallBackListiner{
 
            homeRecyclerView.setLayoutManager(gl);
            homeRecyclerView.setAdapter(adapter);
-       }
+        }
     }
 
    /* private void initAllFavoritePost(String like){
@@ -224,6 +234,28 @@ public class HomeFragment extends Fragment implements CallBackListiner{
             initData();
         }
 
+    @Override
+    public void onPreUpdate() {
+
     }
+
+    @Override
+    public void onPostUpdate(byte[] res, ResStatus status) {
+
+    }
+
+    @Override
+    public void onPostUpdate(JSONObject res, ResStatus status) {
+        progressBar.setVisibility(View.INVISIBLE); //To Hide ProgressBar
+        MyInfoManager.getInstance().updatePosts(res);
+
+        initData();
+    }
+
+    @Override
+    public void onPostUpdate(Bitmap res, ResStatus status) {
+
+    }
+}
 
 //

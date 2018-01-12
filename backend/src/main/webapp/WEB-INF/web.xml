@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee">
+    <servlet>
+        <servlet-name>MyServlet</servlet-name>
+        <servlet-class>com.example.Nisim.myapplication.backend.MyServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MyServlet</servlet-name>
+        <url-pattern>/hello</url-pattern>
+    </servlet-mapping>
+    <welcome-file-list>
+        <welcome-file>index.html</welcome-file>
+    </welcome-file-list>
+    <context-param>
+        <content>the application res directory files</content>
+        <param-name>localAppDir</param-name>
+        <param-value>res</param-value>
+    </context-param>
+    <servlet>
+        <content></content>
+        <display-name>LetgoAppResourceServlet</display-name>
+        <servlet-name>LetgoAppResourceServlet</servlet-name>
+        <servlet-class>com.example.Nisim.myapplication.backend.servlets.LetgoAppResourceServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LetgoAppResourceServlet</servlet-name>
+        <url-pattern>/app_res</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <content></content>
+        <display-name>UploadPostServlet</display-name>
+        <servlet-name>UploadPostServlet</servlet-name>
+        <servlet-class>com.example.Nisim.myapplication.backend.servlets.UploadPostServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UploadPostServlet</servlet-name>
+        <url-pattern>/upload_post</url-pattern>
+    </servlet-mapping>
+</web-app>

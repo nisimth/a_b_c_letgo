@@ -18,7 +18,6 @@ import course.android.letgo_302838271_305212946.R;
 import course.android.letgo_302838271_305212946.core.PostInfo;
 import course.android.letgo_302838271_305212946.database.MyInfoManager;
 import course.android.letgo_302838271_305212946.fragments.MyProfileRelatedFragments.EditPostDialogFragment;
-import course.android.letgo_302838271_305212946.fragments.MyProfileRelatedFragments.MySellingFragment;
 import course.android.letgo_302838271_305212946.fragments.PostInfoDialogFragment;
 import course.android.letgo_302838271_305212946.interfaces.ItemClickListener;
 
@@ -85,8 +84,8 @@ public class MyPostRecyclerViewAdapter extends RecyclerView.Adapter<MyPostRecycl
             deletePostBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Integer deletedPosts = MyInfoManager.getInstance().deletePostFromDB(data);
-                    if ( deletedPosts != 0 ){
+                    Boolean deletedPosts = MyInfoManager.getInstance().deletePostFromDB(data);
+                    if ( deletedPosts  ){
                         Toast.makeText(context,"Post has deleted",Toast.LENGTH_LONG).show();
                     }else {
                         Toast.makeText(context,"Post has not deleted",Toast.LENGTH_LONG).show();
@@ -135,7 +134,7 @@ public class MyPostRecyclerViewAdapter extends RecyclerView.Adapter<MyPostRecycl
         b.putString("CURRENCY_KEY",data.getItemPriceCurrency());
         b.putString("DESC_KEY",data.getContent());
         b.putString("TAG_KEY",data.getTag());
-        b.putByteArray("IMAGE_KEY",data.getImgByteArray());
+        b.putByteArray("IMAGE_KEY",data.getImgByteArray(data.getImg()));
 
 
         PostInfoDialogFragment fragment = new PostInfoDialogFragment();

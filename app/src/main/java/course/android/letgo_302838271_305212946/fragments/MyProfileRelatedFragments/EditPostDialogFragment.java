@@ -2,13 +2,12 @@ package course.android.letgo_302838271_305212946.fragments.MyProfileRelatedFragm
 
 
 import android.app.Dialog;
+import android.app.DialogFragment;
+import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.app.DialogFragment;
-import android.app.Fragment;
 import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -117,6 +116,7 @@ public class EditPostDialogFragment extends DialogFragment {
 
             if(targetRequestCode == 0) {
                 PostInfo post = new PostInfo();
+                post.setLetgo_id(MyInfoManager.getInstance().getMyUserId());
                 post.setTitle(postTitle);
                 post.setContent(postContent);
                 post.setItemPrice(postAmount);
@@ -125,15 +125,17 @@ public class EditPostDialogFragment extends DialogFragment {
                 post.setImg(photo);
                 MyInfoManager.getInstance().addNewPost(post);
             }
-            else if(targetRequestCode == 1){
-                PostInfo post = MyInfoManager.getInstance().getEditPost();
-                post.setTitle(postTitle);
-                post.setContent(postContent);
-                post.setItemPrice(postAmount);
-                post.setItemPriceCurrency(postCurrency);
-                post.setTag(postTag);
-                post.setImg(photo);
-                MyInfoManager.getInstance().updatePost(post);
+            else if(targetRequestCode == 1) {
+                PostInfo editedPost = MyInfoManager.getInstance().getEditPost();
+                if (editedPost != null) {
+                    editedPost.setTitle(postTitle);
+                    editedPost.setContent(postContent);
+                    editedPost.setItemPrice(postAmount);
+                    editedPost.setItemPriceCurrency(postCurrency);
+                    editedPost.setTag(postTag);
+                    editedPost.setImg(photo);
+                    MyInfoManager.getInstance().updatePost(editedPost);
+                }
             }
 
             dismiss();

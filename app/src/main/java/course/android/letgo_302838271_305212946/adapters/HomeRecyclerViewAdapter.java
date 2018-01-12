@@ -10,13 +10,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import java.util.List;
 
 import course.android.letgo_302838271_305212946.R;
 import course.android.letgo_302838271_305212946.core.PostInfo;
-import course.android.letgo_302838271_305212946.database.MyInfoManager;
 import course.android.letgo_302838271_305212946.fragments.PostInfoDialogFragment;
 import course.android.letgo_302838271_305212946.interfaces.ItemClickListener;
 
@@ -74,6 +72,7 @@ public class HomeRecyclerViewAdapter extends RecyclerView.Adapter<HomeRecyclerVi
         private ImageButton favoritePostBtn ;
         ////////////
 
+
         public ViewHolder(View itemView) {
             super(itemView);
             //title = (TextView)itemView.findViewById(R.id.post_title_txtview);
@@ -118,7 +117,7 @@ public class HomeRecyclerViewAdapter extends RecyclerView.Adapter<HomeRecyclerVi
         b.putString("CURRENCY_KEY",data.getItemPriceCurrency());
         b.putString("DESC_KEY",data.getContent());
         b.putString("TAG_KEY",data.getTag());
-        b.putByteArray("IMAGE_KEY",data.getImgByteArray());
+        b.putByteArray("IMAGE_KEY",data.getImgByteArray(data.getImg()));
 
 
         PostInfoDialogFragment fragment = new PostInfoDialogFragment();

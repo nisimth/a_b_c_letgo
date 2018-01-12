@@ -129,8 +129,8 @@ public class MyProfileFragment extends Fragment implements CallBackListiner {
         MySellingFragment mySellingFragment = new MySellingFragment();
         FragmentTransaction t = getChildFragmentManager().beginTransaction();
         t.replace(R.id.content_view, mySellingFragment);
-        t.addToBackStack(null);
         t.commit();
+
         return rootView;
     }
 

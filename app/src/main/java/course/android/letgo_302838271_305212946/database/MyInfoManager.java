@@ -25,7 +25,7 @@ public class MyInfoManager implements NetworkResListener {
     private Context context;
 
 
-    private String myUserId = "letgo";
+    private String myUserId = null;
 
     private PostInfo editPost;
 

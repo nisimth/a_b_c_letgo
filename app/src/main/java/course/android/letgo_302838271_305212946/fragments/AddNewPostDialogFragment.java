@@ -1,15 +1,14 @@
 package course.android.letgo_302838271_305212946.fragments;
 
 
-import android.app.Activity;
 import android.app.Dialog;
 import android.app.DialogFragment;
+import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -119,6 +118,7 @@ public class AddNewPostDialogFragment extends DialogFragment {
             if(targetRequestCode == 0) {
                 PostInfo post = new PostInfo();
                 post.setTitle(postTitle);
+                post.setLetgo_id(MyInfoManager.getInstance().getMyUserId().toString());
                 post.setContent(postContent);
                 post.setItemPrice(postAmount);
                 post.setItemPriceCurrency(postCurrency);
@@ -128,6 +128,7 @@ public class AddNewPostDialogFragment extends DialogFragment {
             }
             else if(targetRequestCode == 1){
                 PostInfo post = MyInfoManager.getInstance().getEditPost();
+                post.setLetgo_id(MyInfoManager.getInstance().getMyUserId().toString());
                 post.setTitle(postTitle);
                 post.setContent(postContent);
                 post.setItemPrice(postAmount);

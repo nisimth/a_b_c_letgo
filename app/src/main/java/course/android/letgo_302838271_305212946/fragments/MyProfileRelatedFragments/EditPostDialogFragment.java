@@ -116,13 +116,14 @@ public class EditPostDialogFragment extends DialogFragment {
 
             if(targetRequestCode == 0) {
                 PostInfo post = new PostInfo();
-                post.setLetgo_id(MyInfoManager.getInstance().getMyUserId());
+                post.setLetgo_id( MyInfoManager.getInstance().getMyUserId().toString());
                 post.setTitle(postTitle);
                 post.setContent(postContent);
                 post.setItemPrice(postAmount);
                 post.setItemPriceCurrency(postCurrency);
                 post.setTag(postTag);
                 post.setImg(photo);
+
                 MyInfoManager.getInstance().addNewPost(post);
             }
             else if(targetRequestCode == 1) {

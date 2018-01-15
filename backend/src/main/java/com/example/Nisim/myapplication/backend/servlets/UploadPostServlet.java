@@ -38,7 +38,7 @@ public class UploadPostServlet extends HttpServlet {
     private static final String POST_CONTENT = "post_content";
     private static final String POST_ITEM_PRICE = "post_item_price";
     private static final String POST_ITEM_PRICE_CURRENCY = "post_item_price_currency";
-    private static final String LETGO_ID = "letgoId";
+    private static final String LETGO_ID = "letgo_id";
     private static final String POST_TAG = "post_tag";
 
     //public static final int DB_RETRY_TIMES=5;

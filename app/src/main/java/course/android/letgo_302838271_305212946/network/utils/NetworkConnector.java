@@ -38,6 +38,7 @@ public class NetworkConnector {
 
 
     private final String HOST_URL =  "http://10.0.2.2:8080/"; //"http://192.168.1.103:8080/";
+    //private final String HOST_URL =  "http://192.168.43.152:8080/"; //"http://192.168.1.103:8080/";
     private  final String BASE_URL = HOST_URL + "app_res";
 
     private int TIME_OUT = 10000;

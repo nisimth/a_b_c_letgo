@@ -252,13 +252,15 @@ public class PostsDataBase extends SQLiteOpenHelper  {
         List<PostInfo> results = new ArrayList<PostInfo>();
         Cursor cursor = null;
         try{
-            String whereArgs[] = {MyInfoManager.getInstance().getMyUserId()};
-            String query = "Select * FROM " + POSTS_TABLE + " WHERE " + LETGO_ID + " =  \"" + whereArgs + "\"";
+            //String whereArgs = MyInfoManager.getInstance().getMyUserId().toString();
+            //String query = "Select * FROM " + POSTS_TABLE + " WHERE " + LETGO_ID + " = " +  "\" + whereArgs + \"";
             //cursor = db.query(POSTS_TABLE, POSTS_COLUMNS, LETGO_ID+"=?",whereArgs, null,null,null);
 
-            SQLiteDatabase db = this.getWritableDatabase();
+            //SQLiteDatabase db = this.getWritableDatabase();
 
-            cursor = db.rawQuery(query, null);
+           // cursor = db.rawQuery(query, null);
+            String whereArgs[] = {MyInfoManager.getInstance().getMyUserId()};
+            cursor = db.query(POSTS_TABLE, POSTS_COLUMNS, LETGO_ID+"=?",whereArgs, null,null,null);
             if(cursor!=null && cursor.getCount()>0) {
                 cursor.moveToFirst();
                 while (!cursor.isAfterLast()) {

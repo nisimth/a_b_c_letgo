@@ -14,6 +14,8 @@
     <string name="post_img">Image</string>
     <string name="save_btn_txt">Save</string>
     <string name="take_photo_btn_txt">take photo</string>
+    <string name="user_1">user 1</string>
+    <string name="user_2">user 2</string>
 
 
     <string-array name="tags">

@@ -7,10 +7,13 @@ import android.app.FragmentTransaction;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 
 import course.android.letgo_302838271_305212946.database.MyInfoManager;
+import course.android.letgo_302838271_305212946.fragments.ChatsFragment;
 import course.android.letgo_302838271_305212946.fragments.HomeFragment;
 import course.android.letgo_302838271_305212946.fragments.MyProfileFragment;
+import course.android.letgo_302838271_305212946.fragments.NotificatiosFragment;
 import course.android.letgo_302838271_305212946.network.utils.NetworkConnector;
 
 
@@ -26,6 +29,8 @@ public class MainActivity extends Activity {
 
         MyInfoManager.getInstance().openDataBase(this);
         NetworkConnector.getInstance().initialize(this);
+
+        hideKeyboard();
 
         fm = getFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
@@ -58,7 +63,23 @@ public class MainActivity extends Activity {
 
 
     }
+    public void notificationsOnClick(View view) {
+        FragmentTransaction ft = fm.beginTransaction();
+        NotificatiosFragment notificatiosFragment = new NotificatiosFragment();
+        ft.replace(R.id.root_view, notificatiosFragment);
+        ft.addToBackStack(null);
+        ft.commit();
+    }
 
+
+
+    public void chatOnClick(View view) {
+        FragmentTransaction ft = fm.beginTransaction();
+        ChatsFragment chatsFragment = new ChatsFragment();
+        ft.replace(R.id.root_view,chatsFragment);
+        ft.addToBackStack(null);
+        ft.commit();
+    }
 
     public void proflieOnClick(View view) {
         FragmentTransaction ft = fm.beginTransaction();
@@ -68,8 +89,7 @@ public class MainActivity extends Activity {
         ft.commit();
     }
 
-
-    /*private void hideKeyboard() {
+    private void hideKeyboard() {
         try {
             View view = this.getCurrentFocus();
             if (view != null) {
@@ -79,6 +99,8 @@ public class MainActivity extends Activity {
         } catch (Throwable t) {
             t.printStackTrace();
         }
-    }*/
+    }
+
+
 }
 

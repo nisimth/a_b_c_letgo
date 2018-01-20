@@ -2,23 +2,21 @@ package course.android.letgo_302838271_305212946.fragments.MyProfileRelatedFragm
 
 
 import android.app.Fragment;
+import android.app.FragmentTransaction;
 import android.content.Context;
 import android.os.Bundle;
+import android.preference.PreferenceFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 
-import java.util.List;
-
 import course.android.letgo_302838271_305212946.R;
-import course.android.letgo_302838271_305212946.core.PostInfo;
-import course.android.letgo_302838271_305212946.database.MyInfoManager;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class SettingFragment extends Fragment {
+public class SettingFragment extends PreferenceFragment {
     private Context context ;
     private ImageButton a ; ///
 
@@ -33,10 +31,28 @@ public class SettingFragment extends Fragment {
         // Inflate the layout for this fragment
         context = getActivity();
         View rootView = inflater.inflate(R.layout.fragment_setting, container, false);
+        //addPreferencesFromResource(R.xml.setting_xml);
+
+        Fragment fragment = new SettingScreen();
+        FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+        fragmentTransaction.add(R.id.setting_view,fragment,"setting_fragment");
+        fragmentTransaction.commit();
 
         return rootView;
     }
 
+
+    public static class SettingScreen extends PreferenceFragment {
+
+        @Override
+        public void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+
+            // Load the preferences from an XML resource
+            addPreferencesFromResource(R.xml.setting_xml);
+        }
+
+    }
 
 
 }

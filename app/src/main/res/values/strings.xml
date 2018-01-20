@@ -36,4 +36,16 @@
         <item>EUR</item>
     </string-array>
 
+    <string-array name="setting_distance">
+        <item>Miles</item>
+        <item>Kilometers</item>
+    </string-array>
+    <string-array name="setting_location">
+        <item>Tel-Aviv</item>
+        <item>Haifa</item>
+        <item>Afula</item>
+        <item>Jerusalem</item>
+        <item>Nazareth-Illit</item>
+        <item>Kfar-Kama</item>
+    </string-array>
 </resources>

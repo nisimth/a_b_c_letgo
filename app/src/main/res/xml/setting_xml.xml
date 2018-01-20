@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <EditTextPreference
+        android:key="pref_user_name"
+        android:title="Name"
+        android:summary="Set your User name" />
+    <EditTextPreference
+        android:key="pref_email"
+        android:title="Email"
+        android:summary="Enter your Email address"/>
+    <ListPreference
+        android:key="pref_location"
+        android:title="Location"
+        android:entries="@array/setting_location"
+        android:entryValues="@array/setting_location"/>
+    <EditTextPreference
+        android:key="pref_password"
+        android:title="Password"
+        android:summary="Choose your personal password"
+        />
+    <ListPreference
+        android:key="pref_distance"
+        android:title="Distance"
+        android:entries="@array/setting_distance"
+        android:entryValues="@array/setting_distance"/>
+    <SwitchPreference
+        android:key="pref_notification"
+        android:title="Notifications"
+        android:summary="On/Off"
+        android:defaultValue="true" />
+    <SwitchPreference
+        android:key="pref_vibration"
+        android:title="Vibration"
+        android:summary="On/Off"
+        android:defaultValue="true" />
+</PreferenceScreen>

@@ -5,12 +5,51 @@
     tools:context="course.android.letgo_302838271_305212946.fragments.MyProfileRelatedFragments.SettingFragment"
     >
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <RelativeLayout
+        android:id="@+id/a"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="SETTING FRAGMENT"
-        android:textSize="70dp"
-        />
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/b"
+            android:layout_width="match_parent"
+            android:layout_height="75dp"
+            android:background="#ff4d4d">
+
+            <TextView
+                android:id="@+id/setting"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="15dp"
+                android:text="Settings "
+                android:textColor="@android:color/white"
+                android:textSize="26dp"
+                android:textStyle="bold" />
+
+            <ImageButton
+                android:id="@+id/exist_setting_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="10dp"
+                android:background="#00000000"
+                android:src="@drawable/outbtn" />
+
+
+        </RelativeLayout>
+
+        <FrameLayout
+            android:id="@+id/setting_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="75dp">
+        </FrameLayout>
+
+
+
+    </RelativeLayout>
 
 </FrameLayout>

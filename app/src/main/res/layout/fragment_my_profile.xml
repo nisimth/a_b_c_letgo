@@ -30,7 +30,8 @@
             android:layout_marginRight="45dp"
             android:layout_marginTop="10dp"
             android:background="#00000000"
-            android:src="@drawable/outbtn" />
+            android:src="@drawable/outbtn"
+            />
 
         <TextView
             android:id="@+id/user_name_text_view"

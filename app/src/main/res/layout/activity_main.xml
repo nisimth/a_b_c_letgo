@@ -21,7 +21,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#fff3e6"
+        android:background="#f1f1f1"
         android:gravity="bottom|center"
         android:orientation="horizontal"
         android:layoutDirection="ltr"

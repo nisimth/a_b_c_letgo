@@ -92,6 +92,15 @@ public class MyInfoManager implements NetworkResListener {
 
     }
 
+    public List<PostInfo> getPostsByKeyword(String keyword){
+        List<PostInfo> list = new ArrayList<PostInfo>();
+        if(postsDataBase!=null) {
+            list = postsDataBase.getPostsByKeyword(keyword);
+        }
+        return list;
+
+    }
+
     public List<PostInfo> getAllMyPosts(){
         List<PostInfo> list = new ArrayList<PostInfo>();
         if(postsDataBase!=null) {

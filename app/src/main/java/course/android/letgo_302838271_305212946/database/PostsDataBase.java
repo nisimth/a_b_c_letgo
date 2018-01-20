@@ -208,6 +208,49 @@ public class PostsDataBase extends SQLiteOpenHelper  {
         return result;
     }
 
+
+    public List<PostInfo> getPostsByKeyword(String keyord){
+        List<PostInfo> result = new ArrayList<PostInfo>();
+        Cursor cursor=null;
+        try {
+
+
+            String query = "Select * FROM " + POSTS_TABLE + " WHERE " + POST_CONTENT + " LIKE   '%" +keyord + "%' ";
+            SQLiteDatabase db = this.getWritableDatabase();
+
+            cursor = db.rawQuery(query, null);
+            if (cursor != null && cursor.getCount() > 0) {
+                cursor.moveToFirst();
+                while (!cursor.isAfterLast()) {
+                    PostInfo post = new PostInfo();
+                    post.setId(cursor.getString(0));
+                    post.setTitle(cursor.getString(1));
+                    post.setContent(cursor.getString(2));
+                    post.setItemPrice(cursor.getString(5));
+                    post.setItemPriceCurrency(cursor.getString(6));
+                    post.setTag(cursor.getString(3));
+                    post.setImgFromByteArray(cursor.getBlob(4));
+                    post.setLetgo_id(cursor.getString(7));
+                    // post.setLikeOrNot(cursor.getString(8)); // new change
+                    result.add(post);
+                    cursor.moveToNext();
+                }
+            }
+        }catch (Throwable t){
+            t.printStackTrace();
+        }
+        finally {
+            if(cursor!=null){
+                cursor.close();
+
+            }
+        }
+        return result;
+
+
+
+    }
+
     public List<PostInfo> getPostsByTag (String tagFromUser){
         List<PostInfo> result = new ArrayList<PostInfo>();
         Cursor cursor=null;

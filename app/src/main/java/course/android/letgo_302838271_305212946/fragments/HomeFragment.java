@@ -15,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
 
@@ -47,6 +48,8 @@ public class HomeFragment extends Fragment implements CallBackListiner, NetworkR
     private ImageButton carsBtn , techBtn , homeBtn , leisureBtn ,
             motorsBtn , fashionBtn , childBtn , entertaimentBtn , otherBtn ;
     private ImageButton loveBtn ;
+    private ImageButton searchBtn;
+    private EditText searchText;
 
     public HomeFragment() {
 
@@ -174,6 +177,14 @@ public class HomeFragment extends Fragment implements CallBackListiner, NetworkR
             }
         });
 
+        searchText = (EditText) rootView.findViewById(R.id.search_viewtxt);
+        searchBtn = (ImageButton) rootView.findViewById(R.id.search_img_btn);
+        searchBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                initDataByKeyword(searchText.getText().toString());
+            }
+        });
        /* loveBtn = (ImageButton) rootView.findViewById(R.id.love_btn);
         loveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -194,7 +205,7 @@ public class HomeFragment extends Fragment implements CallBackListiner, NetworkR
             LinearLayoutManager ll = new LinearLayoutManager(context);
             ll.setOrientation(LinearLayoutManager.VERTICAL);
 
-            GridLayoutManager gl = new GridLayoutManager(context,2);
+            GridLayoutManager gl = new GridLayoutManager(context,3);
 
             homeRecyclerView.setLayoutManager(gl);
             homeRecyclerView.setAdapter(adapter);
@@ -209,10 +220,25 @@ public class HomeFragment extends Fragment implements CallBackListiner, NetworkR
            LinearLayoutManager ll = new LinearLayoutManager(context);
            ll.setOrientation(LinearLayoutManager.VERTICAL);
 
-           GridLayoutManager gl = new GridLayoutManager(context,2);
+           GridLayoutManager gl = new GridLayoutManager(context,3);
 
            homeRecyclerView.setLayoutManager(gl);
            homeRecyclerView.setAdapter(adapter);
+        }
+    }
+    ////////////////////////////////////////////////////////////////////////////////////////
+
+    private void initDataByKeyword(String keyword) {
+        List<PostInfo> posts = MyInfoManager.getInstance().getPostsByKeyword(keyword);
+        if( posts != null && posts.size() > 0 ){
+            HomeRecyclerViewAdapter adapter = new HomeRecyclerViewAdapter(posts,this);
+            LinearLayoutManager ll = new LinearLayoutManager(context);
+            ll.setOrientation(LinearLayoutManager.VERTICAL);
+
+            GridLayoutManager gl = new GridLayoutManager(context,3);
+
+            homeRecyclerView.setLayoutManager(gl);
+            homeRecyclerView.setAdapter(adapter);
         }
     }
 

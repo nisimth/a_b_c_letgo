@@ -113,6 +113,19 @@ public class MyProfileFragment extends Fragment implements CallBackListiner {
         ImageButton settingBtn = (ImageButton) rootView.findViewById(R.id.setting_btn);
         settingBtn.setOnClickListener(onSettingClickListener);
 
+        ImageButton goBackBtn = (ImageButton)rootView.findViewById(R.id.exist_setting_btn);
+        goBackBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager fm = getFragmentManager();
+                FragmentTransaction t = fm.beginTransaction();
+                HomeFragment home = new HomeFragment();
+                t.replace(R.id.root_view,home);
+                t.addToBackStack(null);
+                t.commit();
+            }
+        });
+
         Button addNewPostBtn = (Button) rootView.findViewById(R.id.add_new_post_btn);
         addNewPostBtn.setOnClickListener(new View.OnClickListener(){
             //open camera to shoot a picture and to add it to the data base
